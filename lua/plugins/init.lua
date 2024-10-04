@@ -30,7 +30,7 @@ require("lazy").setup({
   require("plugins.treesitter"),
 
   -- File explorer
-  require("plugins.nvim-tree"),
+  require("plugins.nvimtree"),
 
   -- Icons for nvim-tree and other plugins
   require("plugins.web-devicons"),
