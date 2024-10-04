@@ -2,13 +2,6 @@
 
 local M = {}
 
--- Helper function to set keymaps
-local function map(mode, lhs, rhs, opts)
-    local options = { noremap = true, silent = true }
-    if opts then options = vim.tbl_extend("force", options, opts) end
-    vim.keymap.set(mode, lhs, rhs, options)
-end
-
 -- General mappings
 M.general = {
     n = {
@@ -243,11 +236,22 @@ M.dap = {
     },
 }
 
--- Apply all mappings
-for mode, mode_mappings in pairs(M.general) do
-    for lhs, mapping in pairs(mode_mappings) do
-        map(mode, lhs, mapping[1], { desc = mapping[2] })
+-- Function to load mappings
+local function load_mappings(mappings)
+  for mode, mode_mappings in pairs(mappings) do
+    for lhs, mapping_info in pairs(mode_mappings) do
+      local rhs = mapping_info[1]
+      local opts = vim.tbl_extend("force", { desc = mapping_info[2] }, mapping_info.opts or {})
+      vim.keymap.set(mode, lhs, rhs, opts)
     end
+  end
+end
+
+-- Load all mapping tables
+for name, mappings in pairs(M) do
+  if type(mappings) == "table" then
+    load_mappings(mappings)
+  end
 end
 
 return M

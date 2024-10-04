@@ -1,4 +1,3 @@
-vim.g.mapleader = " "
 
 -- Load core settings
 require("core.options")

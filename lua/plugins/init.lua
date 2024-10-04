@@ -14,35 +14,28 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Load lazy and plugins
 require("lazy").setup({
-  -- Molten (Jupyter Notebooks)
-  require("plugins.molten"),
-
-  -- Image support
-  require("plugins.image"),
+  -- IDE-like features
+  require("plugins.treesitter"),  -- Better syntax highlighting and code understanding
+  require("plugins.nvimtree"),    -- File explorer
+  require("plugins.web-devicons"), -- Icons for nvim-tree and other plugins
+  { "nvim-neotest/nvim-nio" },    -- Asynchronous I/O operations
 
   -- UI enhancements
-  require("plugins.noice"),
+  require("plugins.noice"),       -- Replaces UI for cmdline, messages, and popupmenu
+  require("plugins.avante"),      -- Custom UI enhancements
 
-  -- Luarocks support
-  require("plugins.luarocks"),
+  -- Session management
+  require("plugins.auto-session"), -- Automatic session management
 
-  -- Treesitter for better syntax highlighting and code understanding
-  require("plugins.treesitter"),
+  -- File type specific
+  require("plugins.molten"),      -- Jupyter Notebook integration
+  require("plugins.image"),       -- Image viewing support
 
-  -- File explorer
-  require("plugins.nvimtree"),
+  -- Utility
+  require("plugins.luarocks"),    -- LuaRocks package manager integration
+  require("plugins.nvim-lastplace"), -- Remember last editing position
 
-  -- Icons for nvim-tree and other plugins
-  require("plugins.web-devicons"),
-
-  require("plugins.avante"),
-
-  require("plugins.auto-session"),
-
-  { "nvim-neotest/nvim-nio" },
-
-  require("plugins.nvim-lastplace"),
-
-  { "christoomey/vim-tmux-navigator", lazy = false },
+  -- Navigation
+  { "christoomey/vim-tmux-navigator", lazy = false }, -- Seamless navigation between tmux panes and vim splits
 
 })
