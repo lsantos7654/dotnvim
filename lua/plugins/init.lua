@@ -12,12 +12,14 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
 -- Load lazy and plugins
 require("lazy").setup({
   -- IDE-like features
   require("plugins.treesitter"),  -- Better syntax highlighting and code understanding
   require("plugins.nvimtree"),    -- File explorer
   require("plugins.web-devicons"), -- Icons for nvim-tree and other plugins
+  require("plugins.telescope"),   -- Fuzzy finder and more
   { "nvim-neotest/nvim-nio" },    -- Asynchronous I/O operations
 
   -- UI enhancements
@@ -34,8 +36,18 @@ require("lazy").setup({
   -- Utility
   require("plugins.luarocks"),    -- LuaRocks package manager integration
   require("plugins.nvim-lastplace"), -- Remember last editing position
+  require("plugins.fugitive"), -- Remember last editing position
+  require("plugins.comment"),
 
   -- Navigation
   { "christoomey/vim-tmux-navigator", lazy = false }, -- Seamless navigation between tmux panes and vim splits
 
+  --LSP
+  -- require("plugins.null-ls"),
+  require("plugins.mason"),
+  require("plugins.lsp"),
+  require("plugins.lsp-zero"),
+
+  -- Autocompletion
+  require("plugins.cmp"),
 })
