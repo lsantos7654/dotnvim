@@ -25,6 +25,7 @@ require("lazy").setup({
   -- UI enhancements
   require("plugins.noice"),       -- Replaces UI for cmdline, messages, and popupmenu
   require("plugins.avante"),      -- Custom UI enhancements
+  require("plugins.tabs"),
 
   -- Session management
   require("plugins.auto-session"), -- Automatic session management
@@ -43,7 +44,7 @@ require("lazy").setup({
   { "christoomey/vim-tmux-navigator", lazy = false }, -- Seamless navigation between tmux panes and vim splits
 
   --LSP
-  -- require("plugins.null-ls"),
+  require("plugins.null-ls"),
   require("plugins.mason"),
   require("plugins.lsp"),
   require("plugins.lsp-zero"),

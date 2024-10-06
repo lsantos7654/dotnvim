@@ -31,17 +31,18 @@ M.general = {
 		["<M-n>"] = { "%", "Move to matching bracket" },
 
 		-- Line operations
-		["P"] = { ":pu<CR>]==", "Paste below" },
+		["P"] = { "<cmd>pu<CR>]==", "Paste below" },
 
 
 		-- Additional mappings from paste-2.txt
 		["<leader>s"] = { [[:%s/\v(<C-r><C-w>)//gI<Left><Left><Left>]], "Find and replace" },
 		["n"] = { "nzzzv", "Next search result center screen" },
 		["N"] = { "Nzzzv", "Previous search result center screen" },
-		["<C-n>"] = { ":qall<CR>", "Quit Nvim" },
-		["<leader>pd"] = { ":echo expand('%:p:h')<CR>", "Print file path" },
-		["<leader>ll"] = { ":LspStart<CR>", "Start LSP service" },
-		["<leader>lp"] = { ":LspStop<CR>", "Stop LSP service" },
+		["<C-n>"] = { "<cmd>qall<CR>", "Quit Nvim" },
+		["<leader>pd"] = { "<cmd>echo expand('%:p:h')<CR>", "Print file path" },
+		["<leader>ll"] = { "<cmd>LspStart<CR>", "Start LSP service" },
+		["<leader>lr"] = { "<cmd>LspRestart<CR>", "Start LSP restart" },
+		["<leader>lp"] = { "<cmd>LspStop<CR>", "Stop LSP service" },
 		["<A-d>"] = { "<C-e><C-e>", "Scroll window down" },
 		["<A-u>"] = { "<C-y><C-y>", "Scroll window up" },
 	},
@@ -70,6 +71,7 @@ M.general = {
 		["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "Window right" },
 		["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "Window down" },
 		["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "Window up" },
+		["<M-p>"] = { "<C-r>+", "Paste from clipboard" },
 	},
 }
 
@@ -234,8 +236,8 @@ M.lspconfig = {
 
 M.nvimtree = {
 	n = {
-		["<A-e>"] = { ":NvimTreeToggle <CR>", "Toggle nvimtree" },
-		["<leader>e"] = { ":NvimTreeFocus <CR>", "Focus nvimtree" },
+		["<A-e>"] = { "<cmd>NvimTreeToggle <CR>", "Toggle nvimtree" },
+		["<leader>e"] = { "<cmd>NvimTreeFocus <CR>", "Focus nvimtree" },
 	},
 }
 
@@ -359,16 +361,16 @@ M.gitsigns = {
 
 M.git = {
 	n = {
-		["<leader>gh"] = { ":G<CR>:only<CR>", "Open Git" },
-		["<leader>gl"] = { ":G log --graph --decorate<CR>:only<CR>", "Git Log" },
+		["<leader>gh"] = { "<cmd>G<CR>:only<CR>", "Open Git" },
+		["<leader>gl"] = { "<cmd>G log --graph --decorate<CR>:only<CR>", "Git Log" },
 		["<leader>hc"] = { "/[*] commit \\x\\+<CR>n", "Highlight commits" },
 	},
 }
 
 M.auto = {
 	n = {
-		["<leader>fs"] = { ":SessionSave<CR>", "Save Session" },
-		["<leader>fR"] = { ":SessionRestore<CR>", "Restore Session" },
+		["<leader>fs"] = { "<cmd>SessionSave<CR>", "Save Session" },
+		["<leader>fR"] = { "<cmd>SessionRestore<CR>", "Restore Session" },
 	},
 }
 
@@ -394,14 +396,30 @@ M.window = {
 	},
 }
 
-M.leetcode = {
+M.tab = {
 	n = {
-		["<leader>lt"] = { ":Leet test<CR>", "Run test cases" },
-		["<leader>lr"] = { ":Leet submit<CR>", "Submit" },
-		["<leader>ld"] = { ":Leet desc<CR>", "Toggle description" },
-		["<leader>lc"] = { ":Leet console<CR>", "Toggle console" },
-	},
+		["<Tab>"] = { "<Cmd>BufferNext<CR>", "Jump to next tab" },
+		["<S-Tab>"] = { "<Cmd>BufferPrevious<CR>", "Jump to previous tab" },
+		["<leader>1"] = { "<Cmd>BufferGoto 1<CR>", "Jump to tab 1" },
+		["<leader>2"] = { "<Cmd>BufferGoto 2<CR>", "Jump to tab 2" },
+		["<leader>3"] = { "<Cmd>BufferGoto 3<CR>", "Jump to tab 3" },
+		["<leader>4"] = { "<Cmd>BufferGoto 4<CR>", "Jump to tab 4" },
+		["<leader>5"] = { "<Cmd>BufferGoto 5<CR>", "Jump to tab 5" },
+		["<leader>6"] = { "<Cmd>BufferGoto 6<CR>", "Jump to tab 6" },
+		["<leader>7"] = { "<Cmd>BufferGoto 7<CR>", "Jump to tab 7" },
+		["<leader>8"] = { "<Cmd>BufferGoto 8<CR>", "Jump to tab 8" },
+		["<leader>9"] = { "<Cmd>BufferGoto 9<CR>", "Jump to tab 9" },
+	}
 }
+
+-- M.leetcode = {
+-- 	n = {
+-- 		["<leader>lt"] = { "<cmd>Leet test<CR>", "Run test cases" },
+-- 		["<leader>lr"] = { "<cmd>Leet submit<CR>", "Submit" },
+-- 		["<leader>ld"] = { "<cmd>Leet desc<CR>", "Toggle description" },
+-- 		["<leader>lc"] = { "<cmd>Leet console<CR>", "Toggle console" },
+-- 	},
+-- }
 
 M.dap = {
 	n = {
