@@ -13,8 +13,10 @@ M.general = {
 		["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
 		["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
 		["<leader>fm"] = {
-			function() vim.lsp.buf.format { async = true } end,
-			"LSP formatting"
+			function()
+				vim.lsp.buf.format({ async = true })
+			end,
+			"LSP formatting",
 		},
 
 		-- Window navigation
@@ -32,7 +34,6 @@ M.general = {
 
 		-- Line operations
 		["P"] = { "<cmd>pu<CR>]==", "Paste below" },
-
 
 		-- Additional mappings from paste-2.txt
 		["<leader>s"] = { [[:%s/\v(<C-r><C-w>)//gI<Left><Left><Left>]], "Find and replace" },
@@ -75,36 +76,19 @@ M.general = {
 	},
 }
 
--- Plugin-specific mappings
-M.tabufline = {
-	n = {
-		["<tab>"] = {
-			function() require("nvchad.tabufline").tabuflineNext() end,
-			"Goto next buffer"
-		},
-		["<S-tab>"] = {
-			function() require("nvchad.tabufline").tabuflinePrev() end,
-			"Goto prev buffer"
-		},
-		["<leader>x"] = {
-			function() require("nvchad.tabufline").close_buffer() end,
-			"Close buffer"
-		},
-		["<leader>="] = { "<cmd>wincmd =<CR>", "Equalize windows" },
-	},
-}
-
 M.comment = {
 	n = {
 		["<leader>/"] = {
-			function() require("Comment.api").toggle.linewise.current() end,
-			"Toggle comment"
+			function()
+				require("Comment.api").toggle.linewise.current()
+			end,
+			"Toggle comment",
 		},
 	},
 	v = {
 		["<leader>/"] = {
 			"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-			"Toggle comment"
+			"Toggle comment",
 		},
 	},
 }
@@ -176,21 +160,21 @@ M.lspconfig = {
 
 		["<leader>lf"] = {
 			function()
-				vim.diagnostic.open_float { border = "rounded" }
+				vim.diagnostic.open_float({ border = "rounded" })
 			end,
 			"Floating diagnostic",
 		},
 
 		["[d"] = {
 			function()
-				vim.diagnostic.goto_prev { float = { border = "rounded" } }
+				vim.diagnostic.goto_prev({ float = { border = "rounded" } })
 			end,
 			"Goto prev",
 		},
 
 		["]d"] = {
 			function()
-				vim.diagnostic.goto_next { float = { border = "rounded" } }
+				vim.diagnostic.goto_next({ float = { border = "rounded" } })
 			end,
 			"Goto next",
 		},
@@ -267,14 +251,18 @@ M.telescope = {
 M.nvterm = {
 	t = {
 		["<A-i>"] = {
-			function() require("nvterm.terminal").toggle "horizontal" end,
-			"Toggle horizontal term"
+			function()
+				require("nvterm.terminal").toggle("horizontal")
+			end,
+			"Toggle horizontal term",
 		},
 	},
 	n = {
 		["<A-i>"] = {
-			function() require("nvterm.terminal").toggle "horizontal" end,
-			"Toggle horizontal term"
+			function()
+				require("nvterm.terminal").toggle("horizontal")
+			end,
+			"Toggle horizontal term",
 		},
 	},
 }
@@ -283,13 +271,13 @@ M.whichkey = {
 	n = {
 		["<leader>wK"] = {
 			function()
-				vim.cmd "WhichKey"
+				vim.cmd("WhichKey")
 			end,
 			"Which-key all keymaps",
 		},
 		["<leader>wk"] = {
 			function()
-				local input = vim.fn.input "WhichKey: "
+				local input = vim.fn.input("WhichKey: ")
 				vim.cmd("WhichKey " .. input)
 			end,
 			"Which-key query lookup",
@@ -370,19 +358,20 @@ M.git = {
 M.auto = {
 	n = {
 		["<leader>fs"] = { "<cmd>SessionSave<CR>", "Save Session" },
-		["<leader>fR"] = { "<cmd>SessionRestore<CR>", "Restore Session" },
 	},
 }
 
 M.window = {
 	n = {
 		["<leader>mm"] = {
-			function() require("codewindow").toggle_minimap() end,
-			"Toggle minimap"
+			function()
+				require("codewindow").toggle_minimap()
+			end,
+			"Toggle minimap",
 		},
 		["<leader>mf"] = {
 			function()
-				local codewindow = require "codewindow"
+				local codewindow = require("codewindow")
 				codewindow.toggle_focus()
 				IS_FOCUS = not IS_FOCUS
 				if IS_FOCUS then
@@ -391,7 +380,7 @@ M.window = {
 					vim.o.scrolloff = 8
 				end
 			end,
-			"Toggle focus and center cursor"
+			"Toggle focus and center cursor",
 		},
 	},
 }
@@ -400,6 +389,7 @@ M.tab = {
 	n = {
 		["<Tab>"] = { "<Cmd>BufferNext<CR>", "Jump to next tab" },
 		["<S-Tab>"] = { "<Cmd>BufferPrevious<CR>", "Jump to previous tab" },
+		["<leader>x"] = { "<Cmd>BufferClose<CR>", "Close Buffer" },
 		["<leader>1"] = { "<Cmd>BufferGoto 1<CR>", "Jump to tab 1" },
 		["<leader>2"] = { "<Cmd>BufferGoto 2<CR>", "Jump to tab 2" },
 		["<leader>3"] = { "<Cmd>BufferGoto 3<CR>", "Jump to tab 3" },
@@ -409,7 +399,8 @@ M.tab = {
 		["<leader>7"] = { "<Cmd>BufferGoto 7<CR>", "Jump to tab 7" },
 		["<leader>8"] = { "<Cmd>BufferGoto 8<CR>", "Jump to tab 8" },
 		["<leader>9"] = { "<Cmd>BufferGoto 9<CR>", "Jump to tab 9" },
-	}
+		["<leader>="] = { "<cmd>wincmd =<CR>", "Equalize windows" },
+	},
 }
 
 -- M.leetcode = {
@@ -430,8 +421,10 @@ M.dap = {
 		["<leader>dJ"] = { "<cmd> DapStepOver <CR>", "Step over function/Next in buffer" },
 		["<leader>dq"] = { "<cmd> DapTerminate <CR>", "Exit" },
 		["<leader>dd"] = {
-			function() require("dap").continue() end,
-			"Run debugger"
+			function()
+				require("dap").continue()
+			end,
+			"Run debugger",
 		},
 	},
 }

@@ -24,10 +24,12 @@ require("lazy").setup({
 
   -- UI enhancements
   require("plugins.noice"),       -- Replaces UI for cmdline, messages, and popupmenu
+  require("plugins.notify"),       -- Replaces UI for cmdline, messages, and popupmenu
   require("plugins.avante"),      -- Custom UI enhancements
   require("plugins.tabs"),
 
   -- Session management
+  require("plugins.nvim-lastplace"), -- Remember last editing position
   require("plugins.auto-session"), -- Automatic session management
 
   -- File type specific
@@ -36,7 +38,6 @@ require("lazy").setup({
 
   -- Utility
   require("plugins.luarocks"),    -- LuaRocks package manager integration
-  require("plugins.nvim-lastplace"), -- Remember last editing position
   require("plugins.fugitive"), -- Remember last editing position
   require("plugins.comment"),
 

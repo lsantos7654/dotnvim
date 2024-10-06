@@ -8,7 +8,7 @@ return {
 		vim.g.barbar_auto_setup = false
 	end,
 	opts = {
-		-- animation = true,
+		animation = false,
 		-- insert_at_start = true,
 	},
 	version = "^1.0.0", -- optional: only update when a new 1.x version is released
