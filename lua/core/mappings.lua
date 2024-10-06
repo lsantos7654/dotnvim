@@ -57,8 +57,8 @@ M.general = {
 		["<M-j>"] = { "}", "Move to next paragraph" },
 		["<M-k>"] = { "{", "Move to previous paragraph" },
 		["<M-n>"] = { "%", "Move to matching bracket" },
-		["J"] = { "<cmd>m '>+1<CR>gv=gv", "Move text down" },
-		["K"] = { "<cmd>m '<-2<CR>gv=gv", "Move text up" },
+		["J"] = { ":m '>+1<CR>gv=gv", "Move text down" },
+		["K"] = { ":m '<-2<CR>gv=gv", "Move text up" },
 		["<A-d>"] = { "<C-e><C-e>", "Scroll window down" },
 		["<A-u>"] = { "<C-y><C-y>", "Scroll window up" },
 	},
@@ -357,7 +357,7 @@ M.git = {
 
 M.auto = {
 	n = {
-		["<leader>fs"] = { "<cmd>SessionSave<CR>", "Save Session" },
+		["<leader>fs"] = { ":SessionSave<CR>", "Save Session" },
 	},
 }
 

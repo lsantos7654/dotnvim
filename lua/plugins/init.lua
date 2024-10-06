@@ -15,6 +15,10 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Load lazy and plugins
 require("lazy").setup({
+  -- Session management
+  require("plugins.nvim-lastplace"), -- Remember last editing position
+  require("plugins.auto-session"), -- Automatic session management
+
   -- IDE-like features
   require("plugins.treesitter"),  -- Better syntax highlighting and code understanding
   require("plugins.nvimtree"),    -- File explorer
@@ -28,9 +32,6 @@ require("lazy").setup({
   require("plugins.avante"),      -- Custom UI enhancements
   require("plugins.tabs"),
 
-  -- Session management
-  require("plugins.nvim-lastplace"), -- Remember last editing position
-  require("plugins.auto-session"), -- Automatic session management
 
   -- File type specific
   require("plugins.molten"),      -- Jupyter Notebook integration
