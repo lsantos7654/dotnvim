@@ -11,7 +11,6 @@ M.general = {
 		["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
 		["<C-s>"] = { "<cmd> w <CR>", "Save file" },
 		["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
-		["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
 		["<leader>fm"] = {
 			function()
 				vim.lsp.buf.format({ async = true })
@@ -352,6 +351,12 @@ M.git = {
 		["<leader>gh"] = { "<cmd>G<CR>:only<CR>", "Open Git" },
 		["<leader>gl"] = { "<cmd>G log --graph --decorate<CR>:only<CR>", "Git Log" },
 		["<leader>hc"] = { "/[*] commit \\x\\+<CR>n", "Highlight commits" },
+	},
+}
+
+M.zen = {
+	n = {
+		["<leader>z"] = { "<cmd>ZenMode<CR>", "ZenMode" },
 	},
 }
 

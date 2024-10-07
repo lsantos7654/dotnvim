@@ -34,6 +34,7 @@ require("lazy").setup({
 	require("plugins.blankline"), -- Indentation guides
 	require("plugins.whichkey"), -- Helper for keybindings
 	require("plugins.codewindow"), -- Terminal code window
+	require("plugins.status"), -- Status line
 
 	-- File type specific
 	require("plugins.molten"), -- Jupyter Notebook integration
@@ -44,6 +45,7 @@ require("lazy").setup({
 	require("plugins.fugitive"), -- Git integration
 	require("plugins.gitsigns"), -- Git signs on tab
 	require("plugins.comment"), -- Easy code commenting
+	require("plugins.zen"), -- Easy code commenting
 
 	-- Navigation
 	{
