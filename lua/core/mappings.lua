@@ -361,6 +361,26 @@ M.auto = {
 	},
 }
 
+M.molten = {
+	n = {
+		["<leader>m<CR>"] = { "<cmd>noautocmd MoltenEnterOutput<CR>", "Molten Enter Output" },
+		["<leader>mi"] = { "<cmd>MoltenInit<CR>", "Initialize Molten" },
+		["<leader>mo"] = { "<cmd>MoltenHideOutput<CR>", "Hide Molten Output" },
+		["<leader>r"] = { "<cmd>MoltenEvaluateLine<CR>", "Evaluate line" },
+		["<leader>rr"] = { "<cmd>MoltenReevaluateCell<CR>", "Re-evaluate cell" },
+		["]b"] = { "<cmd>MoltenNext<CR>", "Next molten block" },
+		["[b"] = { "<cmd>MoltenPrev<CR>", "Previous molten block" },
+	},
+	v = {
+		["<leader>m<CR>"] = { "<cmd>noautocmd MoltenEnterOutput<CR>", "Molten Enter Output" },
+		["<leader>r"] = { ":<C-u>MoltenEvaluateVisual<CR>gv", "Evaluate visual selection" },
+		["<leader>mo"] = { "<cmd>MoltenHideOutput<CR>", "Hide Molten Output" },
+		["<leader>rr"] = { "<cmd>MoltenReevaluateCell<CR>", "Re-evaluate cell" },
+		["]b"] = { "<cmd>MoltenNext<CR>", "Next molten block" },
+		["[b"] = { "<cmd>MoltenPrev<CR>", "Previous molten block" },
+	},
+}
+
 M.window = {
 	n = {
 		["<leader>mm"] = {
