@@ -143,7 +143,6 @@ return {
 		local right = {
 			c.lsp_client_names,
 			c.file_type,
-			c.position,
 			c.line_percentage,
 		}
 
