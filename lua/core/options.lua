@@ -18,4 +18,10 @@ vim.g.mapleader = " "
 vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermbg = "NONE" })
 vim.api.nvim_set_hl(0, "NonText", { bg = "NONE", ctermbg = "NONE" })
 
+vim.filetype.add({
+  extension = {
+    qmd = "markdown",
+  },
+})
+
 vim.opt.laststatus = 3
