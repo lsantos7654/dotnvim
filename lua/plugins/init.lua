@@ -65,6 +65,7 @@ require("lazy").setup({
 		require("plugins.code_assistance.mason"), -- Manage LSP servers, linters, and formatters
 		require("plugins.code_assistance.lsp"), -- LSP configuration
 		require("plugins.code_assistance.lsp-zero"), -- Simplified LSP setup
+		require("plugins.code_assistance.null-ls"), -- Simplified LSP setup
 
 		-- Autocompletion
 		require("plugins.code_assistance.cmp"), -- Intelligent code completion

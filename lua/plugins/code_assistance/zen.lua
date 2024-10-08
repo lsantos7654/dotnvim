@@ -7,8 +7,8 @@ return {
 			height = 1,
 			options = {
 				signcolumn = "no",
-				number = false,
-				relativenumber = false,
+				number = true,
+				relativenumber = true,
 				cursorline = false,
 				cursorcolumn = false,
 				foldcolumn = "0",
@@ -22,12 +22,12 @@ return {
 				showcmd = false,
 				laststatus = 0,
 			},
-			twilight = { enabled = true },
-			gitsigns = { enabled = false },
-			tmux = { enabled = false },
+			twilight = { enabled = false },
+			gitsigns = { enabled = true },
+			tmux = { enabled = true },
 			kitty = {
 				enabled = true,
-				font = "+4",
+				font = "+8",
 			},
 		},
 		on_open = function(win)
