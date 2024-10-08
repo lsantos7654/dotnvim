@@ -1,65 +1,79 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable",
-		lazypath,
-	})
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- Load lazy and plugins
 require("lazy").setup({
-	-- Session management
-	require("plugins.nvim-lastplace"), -- Remember last editing position
-	require("plugins.auto-session"), -- Automatic session management
+    -- Editor Enhancements
+    {
+        -- Session Management
+        require("plugins.nvim-lastplace"), -- Remember last cursor position in files
+        require("plugins.auto-session"),   -- Automatic session management for projects
 
-	-- IDE-like features
-	require("plugins.treesitter"), -- Better syntax highlighting and code understanding
-	require("plugins.nvimtree"), -- File explorer
-	require("plugins.web-devicons"), -- Icons for nvim-tree and other plugins
-	require("plugins.telescope"), -- Fuzzy finder and more
-	{ "nvim-neotest/nvim-nio" }, -- Asynchronous I/O operations
-	require("plugins.nvterm"), -- Terminal setup
+        -- Navigation and Exploration
+        require("plugins.nvimtree"),       -- File explorer sidebar
+        require("plugins.telescope"),      -- Fuzzy finder for files, buffers, and more
+        {
+            "christoomey/vim-tmux-navigator",
+            lazy = false,
+        },                                 -- Seamless navigation between tmux panes and vim splits
 
-	-- UI enhancements
-	require("plugins.noice"), -- Replaces UI for cmdline, messages, and popupmenu
-	require("plugins.notify"), -- Notification system
-	require("plugins.avante"), -- Custom UI enhancements
-	require("plugins.tabs"), -- Tab management
-	require("plugins.blankline"), -- Indentation guides
-	require("plugins.whichkey"), -- Helper for keybindings
-	require("plugins.codewindow"), -- Terminal code window
-	require("plugins.status"), -- Status line
-	require("plugins.theme"),
-	
-	-- File type specific
-	require("plugins.luarocks"), -- LuaRocks package manager integration
-	require("plugins.molten"), -- Jupyter Notebook integration
-	require("plugins.image"), -- Image viewing support
+        -- Code Understanding and Navigation
+        require("plugins.treesitter"),     -- Advanced syntax highlighting and code analysis
+        require("plugins.codewindow"),     -- Minimap-style code outline
+    },
 
-	-- Utility
-	require("plugins.fugitive"), -- Git integration
-	require("plugins.gitsigns"), -- Git signs on tab
-	require("plugins.comment"), -- Easy code commenting
-	require("plugins.zen"), -- Easy code commenting
+    -- UI and Visual Enhancements
+    {
+        require("plugins.web-devicons"),   -- File icons for various plugins
+        require("plugins.noice"),          -- Enhance UI for commandline, messages, and popupmenu
+        require("plugins.notify"),         -- Fancy notification system
+        require("plugins.avante"),         -- Custom UI improvements
+        require("plugins.tabs"),           -- Enhanced tab management
+        require("plugins.blankline"),      -- Show indentation guides
+        require("plugins.whichkey"),       -- Interactive keybinding helper
+        require("plugins.status"),         -- Customizable status line
+        require("plugins.theme"),          -- Color scheme and theming
+    },
 
- 	-- Navigation
- 	{
- 		"christoomey/vim-tmux-navigator",
- 		lazy = false,
- 	}, -- Seamless navigation between tmux panes and vim splits
+    -- Development Tools
+    {
+        -- Version Control
+        require("plugins.fugitive"),       -- Git integration
+        require("plugins.gitsigns"),       -- Show git changes in the sign column
 
- 	-- LSP (Language Server Protocol)
- 	require("plugins.null-ls"), -- Use Neovim as a language server
- 	require("plugins.mason"), -- Package manager for LSP servers, DAP servers, linters, and formatters
- 	require("plugins.lsp"), -- LSP configuration
- 	require("plugins.lsp-zero"), -- Easy LSP setup
+        -- Terminal Integration
+        require("plugins.nvterm"),         -- Better terminal integration
+        { "nvim-neotest/nvim-nio" },       -- Asynchronous I/O library (dependency for some plugins)
 
- 	-- Autocompletion
- 	require("plugins.cmp"), -- Autocompletion plugin
- })
+        -- Language Support
+        require("plugins.luarocks"),       -- LuaRocks package manager integration
+        require("plugins.molten"),         -- Jupyter Notebook integration in Neovim
+        require("plugins.image"),          -- Image viewing support within Neovim
+    },
+
+    -- Coding Assistance
+    {
+        -- Language Server Protocol (LSP)
+        require("plugins.mason"),          -- Manage LSP servers, linters, and formatters
+        require("plugins.lsp"),            -- LSP configuration
+        require("plugins.lsp-zero"),       -- Simplified LSP setup
+
+        -- Autocompletion
+        require("plugins.cmp"),            -- Intelligent code completion
+
+        -- Coding Utilities
+        require("plugins.comment"),        -- Easy code commenting
+        require("plugins.zen"),            -- Distraction-free coding mode
+    },
+})
