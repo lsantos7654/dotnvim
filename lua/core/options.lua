@@ -47,9 +47,16 @@ vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)
 	return vim.lsp.util.open_floating_preview(markdown_lines, "markdown", config)
 end
 
--- Cursor follows split
-vim.api.nvim_create_autocmd("WinNew", {
-	callback = function()
-		vim.cmd("wincmd p")
-	end,
-})
+-- Folding configuration
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldtext =
+  [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+vim.opt.fillchars = { fold = "·" }
+vim.opt.foldcolumn = "0"
+vim.opt.foldenable = false
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldnestmax = 3
+vim.opt.foldminlines = 1
+vim.cmd [[highlight Folded guibg=#2d3149 guifg=#a9b1d6]]

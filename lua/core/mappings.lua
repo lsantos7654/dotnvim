@@ -24,6 +24,10 @@ M.general = {
 		["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "Window down" },
 		["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "Window up" },
 
+		-- Cursor follows split
+		["<C-w>v"] = { "<C-w>v<C-w>l", "Vertical Split" },
+		["<C-w>s"] = { "<C-w>s<C-w>j", "Horizontal Split" },
+
 		-- Custom Alt mappings
 		["<M-h>"] = { "^", "Move to beginning of previous word" },
 		["<M-l>"] = { "$", "Move to end of current word" },
@@ -47,19 +51,32 @@ M.general = {
 		["<A-u>"] = { "<C-y><C-y>", "Scroll window up" },
 	},
 	v = {
+		-- Smart j and k: move by visual lines if wrapping is enabled
 		["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
 		["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
+
+		-- Indent and unindent selected lines
 		["<Tab>"] = { ">gv", "Indent line" },
 		["<S-Tab>"] = { "<gv", "Unindent line" },
+
+		-- Quick navigation using Alt key
 		["<M-h>"] = { "^", "Move to beginning of previous word" },
 		["<M-l>"] = { "$", "Move to end of current word" },
 		["<M-j>"] = { "}", "Move to next paragraph" },
 		["<M-k>"] = { "{", "Move to previous paragraph" },
 		["<M-n>"] = { "%", "Move to matching bracket" },
+
+		-- Move selected text up and down
 		["J"] = { ":m '>+1<CR>gv=gv", "Move text down" },
 		["K"] = { ":m '<-2<CR>gv=gv", "Move text up" },
+
+		-- Scroll window up and down
 		["<A-d>"] = { "<C-e><C-e>", "Scroll window down" },
 		["<A-u>"] = { "<C-y><C-y>", "Scroll window up" },
+
+		-- Cursor follows split
+		["<C-w>v"] = { "<C-w>v<C-w>l", "Vertical Split" },
+		["<C-w>s"] = { "<C-w>s<C-w>j", "Horizontal Split" },
 	},
 	x = {
 		["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
@@ -382,8 +399,8 @@ M.molten = {
 
 M.noice = {
 	n = {
-		["<M-p>"] = {"<cmd>NoiceDismiss<CR>", "Dismiss message"},
-	}
+		["<M-p>"] = { "<cmd>NoiceDismiss<CR>", "Dismiss message" },
+	},
 }
 
 M.window = {
