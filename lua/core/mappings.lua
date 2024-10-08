@@ -71,7 +71,7 @@ M.general = {
 		["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "Window right" },
 		["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "Window down" },
 		["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "Window up" },
-		["<M-p>"] = { "<C-r>+", "Paste from clipboard" },
+		["<M-v>"] = { "<C-r>+", "Paste from clipboard" },
 	},
 }
 
@@ -134,13 +134,6 @@ M.lspconfig = {
 				vim.lsp.buf.type_definition()
 			end,
 			"LSP definition type",
-		},
-
-		["<leader>ra"] = {
-			function()
-				require("nvchad.renamer").open()
-			end,
-			"LSP rename",
 		},
 
 		["<leader>ca"] = {
@@ -237,6 +230,7 @@ M.telescope = {
 		["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
 		["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
 		["<leader>fr"] = { "<cmd> Telescope lsp_references <CR>", "Find references" },
+		["<leader>fn"] = { "<cmd> Telescope notify <CR>", "Find notifications" },
 
 		-- git
 		["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
@@ -378,12 +372,18 @@ M.molten = {
 	},
 	v = {
 		["<leader>m<CR>"] = { "<cmd>noautocmd MoltenEnterOutput<CR>", "Molten Enter Output" },
-		["<leader>r"] = { ":<C-u>MoltenEvaluateVisual<CR>gv", "Evaluate visual selection" },
+		["<leader>r"] = { ":<C-u>MoltenEvaluateVisual<CR><ESC>", "Evaluate visual selection" },
 		["<leader>mo"] = { "<cmd>MoltenHideOutput<CR>", "Hide Molten Output" },
-		["<leader>rr"] = { "<cmd>MoltenReevaluateCell<CR>", "Re-evaluate cell" },
+		["<leader>rr"] = { "<cmd>MoltenReevaluateCell<CR><ESC>", "Re-evaluate cell" },
 		["]b"] = { "<cmd>MoltenNext<CR>", "Next molten block" },
 		["[b"] = { "<cmd>MoltenPrev<CR>", "Previous molten block" },
 	},
+}
+
+M.noice = {
+	n = {
+		["<M-p>"] = {"<cmd>NoiceDismiss<CR>", "Dismiss message"},
+	}
 }
 
 M.window = {
