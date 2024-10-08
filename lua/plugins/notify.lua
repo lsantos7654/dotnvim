@@ -4,7 +4,6 @@ return {
 	config = function(_, opts)
 		require("notify").setup({
 			timeout = 3000,
-			background_colour = "#000000", -- or any other color you prefer
 			stages = "fade_in_slide_out",
 			render = "minimal",
 			background_colour = "#000000",

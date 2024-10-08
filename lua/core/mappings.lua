@@ -316,7 +316,7 @@ M.gitsigns = {
 		},
 
 		-- Actions
-		["<leader>rh"] = {
+		["<leader>gr"] = {
 			function()
 				require("gitsigns").reset_hunk()
 			end,

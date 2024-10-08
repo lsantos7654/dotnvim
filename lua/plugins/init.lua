@@ -35,30 +35,31 @@ require("lazy").setup({
 	require("plugins.whichkey"), -- Helper for keybindings
 	require("plugins.codewindow"), -- Terminal code window
 	require("plugins.status"), -- Status line
-
+	require("plugins.theme"),
+	
 	-- File type specific
+	require("plugins.luarocks"), -- LuaRocks package manager integration
 	require("plugins.molten"), -- Jupyter Notebook integration
 	require("plugins.image"), -- Image viewing support
 
 	-- Utility
-	require("plugins.luarocks"), -- LuaRocks package manager integration
 	require("plugins.fugitive"), -- Git integration
 	require("plugins.gitsigns"), -- Git signs on tab
 	require("plugins.comment"), -- Easy code commenting
 	require("plugins.zen"), -- Easy code commenting
 
-	-- Navigation
-	{
-		"christoomey/vim-tmux-navigator",
-		lazy = false,
-	}, -- Seamless navigation between tmux panes and vim splits
+ 	-- Navigation
+ 	{
+ 		"christoomey/vim-tmux-navigator",
+ 		lazy = false,
+ 	}, -- Seamless navigation between tmux panes and vim splits
 
-	-- LSP (Language Server Protocol)
-	require("plugins.null-ls"), -- Use Neovim as a language server
-	require("plugins.mason"), -- Package manager for LSP servers, DAP servers, linters, and formatters
-	require("plugins.lsp"), -- LSP configuration
-	require("plugins.lsp-zero"), -- Easy LSP setup
+ 	-- LSP (Language Server Protocol)
+ 	require("plugins.null-ls"), -- Use Neovim as a language server
+ 	require("plugins.mason"), -- Package manager for LSP servers, DAP servers, linters, and formatters
+ 	require("plugins.lsp"), -- LSP configuration
+ 	require("plugins.lsp-zero"), -- Easy LSP setup
 
-	-- Autocompletion
-	require("plugins.cmp"), -- Autocompletion plugin
-})
+ 	-- Autocompletion
+ 	require("plugins.cmp"), -- Autocompletion plugin
+ })

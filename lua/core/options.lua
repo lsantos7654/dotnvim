@@ -25,3 +25,5 @@ vim.filetype.add({
 })
 
 vim.opt.laststatus = 3
+
+vim.cmd([[highlight NotifyBackground guibg=#000000]])
