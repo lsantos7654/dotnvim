@@ -22,6 +22,7 @@ require("lazy").setup({
 
 		-- Navigation and Exploration
 		require("plugins.navigation.nvimtree"), -- File explorer sidebar
+		require("plugins.navigation.oil"), -- Easier file manipulation
 		require("plugins.navigation.telescope"), -- Fuzzy finder for files, buffers, and more
 		{
 			"christoomey/vim-tmux-navigator",
@@ -41,6 +42,7 @@ require("lazy").setup({
 		require("plugins.ui_visual.whichkey"), -- Interactive keybinding helper
 		require("plugins.ui_visual.status"), -- Customizable status line
 		require("plugins.ui_visual.theme"),  -- Color scheme and theming
+		require("plugins.ui_visual.todo"),  -- pretty todo messages with telescope
 	},
 
 	-- Development Tools

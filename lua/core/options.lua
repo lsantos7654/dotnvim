@@ -3,6 +3,10 @@ vim.opt.clipboard = "unnamedplus" -- Use system clipboard
 vim.opt.termguicolors = true -- Enable 24-bit RGB color in the TUI
 vim.g.mapleader = " " -- Set leader key to space
 
+-- spellchecking
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us" }
+
 -- Disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -51,7 +55,7 @@ end
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldtext =
-  [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+	[[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
 vim.opt.fillchars = { fold = "·" }
 vim.opt.foldcolumn = "0"
 vim.opt.foldenable = false
@@ -59,4 +63,4 @@ vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.foldnestmax = 3
 vim.opt.foldminlines = 1
-vim.cmd [[highlight Folded guibg=#2d3149 guifg=#a9b1d6]]
+vim.cmd([[highlight Folded guibg=#2d3149 guifg=#a9b1d6]])

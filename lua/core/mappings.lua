@@ -178,14 +178,14 @@ M.lspconfig = {
 			function()
 				vim.diagnostic.goto_prev({ float = { border = "rounded" } })
 			end,
-			"Goto prev",
+			"Goto prev diagnostic",
 		},
 
 		["]d"] = {
 			function()
 				vim.diagnostic.goto_next({ float = { border = "rounded" } })
 			end,
-			"Goto next",
+			"Goto next diagnostic",
 		},
 
 		["<leader>q"] = {
@@ -377,6 +377,18 @@ M.auto = {
 	},
 }
 
+M.spellcheck = {
+	n = {
+		["<leader>d"] = { "1z=", "Spell check suggestions" },
+	},
+}
+
+M.oil = {
+	n = {
+		["<leader>o"] = { "<cmd>Oil<CR>", "Edit files like vim" },
+	},
+}
+
 M.molten = {
 	n = {
 		["<leader>m<CR>"] = { "<cmd>noautocmd MoltenEnterOutput<CR>", "Molten Enter Output" },
@@ -453,23 +465,6 @@ M.tab = {
 -- 		["<leader>lc"] = { "<cmd>Leet console<CR>", "Toggle console" },
 -- 	},
 -- }
-
-M.dap = {
-	n = {
-		["<leader>db"] = { "<cmd> DapToggleBreakpoint <CR>", "Add breakpoint at line" },
-		["<leader>dc"] = { "<cmd> DapContinue <CR>", "Continue to next breakpoint" },
-		["<leader>dj"] = { "<cmd> DapStepInto <CR>", "Step into function/Next" },
-		["<leader>dk"] = { "<cmd> DapStepOut <CR>", "Step out of function" },
-		["<leader>dJ"] = { "<cmd> DapStepOver <CR>", "Step over function/Next in buffer" },
-		["<leader>dq"] = { "<cmd> DapTerminate <CR>", "Exit" },
-		["<leader>dd"] = {
-			function()
-				require("dap").continue()
-			end,
-			"Run debugger",
-		},
-	},
-}
 
 -- Function to load mappings
 local function load_mappings(mappings)
