@@ -247,6 +247,7 @@ M.telescope = {
 		["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
 		["<leader>fr"] = { "<cmd> Telescope lsp_references <CR>", "Find references" },
 		["<leader>fn"] = { "<cmd> Telescope notify <CR>", "Find notifications" },
+		["<leader>ft"] = { "<cmd> Telescope treesitter <CR>", "Find treesitter" },
 
 		-- git
 		["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
@@ -398,7 +399,7 @@ M.marks = {
 M.molten = {
 	n = {
 		["<leader>m<CR>"] = { "<cmd>noautocmd MoltenEnterOutput<CR>", "Molten Enter Output" },
-		["<leader>mi"] = { "<cmd>MoltenInit<CR>", "Initialize Molten" },
+		["<leader>mi"] = { "<cmd>MoltenDeinit<CR>", "Deinitialize Molten" },
 		["<leader>mo"] = { "<cmd>MoltenHideOutput<CR>", "Hide Molten Output" },
 		["<leader>r"] = { "<cmd>MoltenEvaluateLine<CR>", "Evaluate line" },
 		["<leader>rr"] = { "<cmd>MoltenReevaluateCell<CR>", "Re-evaluate cell" },
