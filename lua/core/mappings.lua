@@ -10,7 +10,6 @@ M.general = {
 		["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
 		["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
 		["<C-s>"] = { "<cmd> w <CR>", "Save file" },
-		["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
 		["<leader>fm"] = {
 			function()
 				vim.lsp.buf.format({ async = true })
@@ -379,13 +378,20 @@ M.auto = {
 
 M.spellcheck = {
 	n = {
-		["<leader>d"] = { "1z=", "Spell check suggestions" },
+		["<leader>b"] = { "1z=", "Spell check suggestions" },
 	},
 }
 
 M.oil = {
 	n = {
 		["<leader>o"] = { "<cmd>Oil<CR>", "Edit files like vim" },
+	},
+}
+
+M.marks = {
+	n = {
+		["<leader>dm"] = { "<cmd>delmarks! | delmarks A-Z<CR>", "Delete all marks in buffer (lowercase and uppercase)" },
+		["<leader>dM"] = { "<cmd>delmarks! | delmarks A-Z | wshada!<CR>", "Delete all marks (including global and uppercase)" },
 	},
 }
 

@@ -43,6 +43,8 @@ require("lazy").setup({
 		require("plugins.ui_visual.status"), -- Customizable status line
 		require("plugins.ui_visual.theme"),  -- Color scheme and theming
 		require("plugins.ui_visual.todo"),  -- pretty todo messages with telescope
+		require("plugins.ui_visual.marks"),  -- visual marks
+		require("plugins.ui_visual.context"),  -- treesitter context
 	},
 
 	-- Development Tools
