@@ -7,14 +7,20 @@ vim.g.mapleader = " " -- Set leader key to space
 vim.opt.spell = true
 vim.opt.spelllang = { "en_us" }
 
+-- Set search to ignore case
+vim.opt.ignorecase = true
+
+-- Enable smart case sensitivity
+vim.opt.smartcase = true
+
 -- Disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Indentation settings
-vim.opt.tabstop = 4 -- Number of spaces a TAB counts for
-vim.opt.shiftwidth = 4 -- Number of spaces to use for auto-indenting
-vim.opt.softtabstop = 4 -- Number of spaces that a <Tab> counts for while editing
+vim.opt.tabstop = 2 -- Number of spaces a TAB counts for
+vim.opt.shiftwidth = 2 -- Number of spaces to use for auto-indenting
+vim.opt.softtabstop = 2-- Number of spaces that a <Tab> counts for while editing
 
 -- Line numbering
 vim.wo.number = true -- Show line numbers
