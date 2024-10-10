@@ -7,8 +7,8 @@ return {
 			height = 1,
 			options = {
 				signcolumn = "no",
-				number = true,
-				relativenumber = true,
+				number = false,
+				relativenumber = false,
 				cursorline = false,
 				cursorcolumn = false,
 				foldcolumn = "0",
@@ -27,7 +27,7 @@ return {
 			tmux = { enabled = true },
 			kitty = {
 				enabled = true,
-				font = "+8",
+				font = "+4",
 			},
 		},
 		on_open = function(win)
