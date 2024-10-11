@@ -20,7 +20,7 @@ vim.g.loaded_netrwPlugin = 1
 -- Indentation settings
 vim.opt.tabstop = 2 -- Number of spaces a TAB counts for
 vim.opt.shiftwidth = 2 -- Number of spaces to use for auto-indenting
-vim.opt.softtabstop = 2-- Number of spaces that a <Tab> counts for while editing
+vim.opt.softtabstop = 2 -- Number of spaces that a <Tab> counts for while editing
 
 -- Line numbering
 vim.wo.number = true -- Show line numbers
@@ -35,12 +35,19 @@ vim.opt.laststatus = 3 -- Global statusline
 -- Custom highlights
 vim.cmd([[highlight NotifyBackground guibg=#000000]])
 
--- File type associations
+-- -- File type associations
 vim.filetype.add({
 	extension = {
 		qmd = "markdown",
 	},
 })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "quarto", "markdown" }, -- Add the filetypes you want to use otter with
+	callback = function()
+		require("otter").activate()
+	end,
+})
+vim.treesitter.language.register("markdown", { "quarto", "rmd" })
 
 -- LSP hover handler
 vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)

@@ -61,6 +61,7 @@ require("lazy").setup({
 		require("plugins.dev_tools.luarocks"), -- LuaRocks package manager integration
 		require("plugins.dev_tools.molten"), -- Jupyter Notebook integration in Neovim
 		require("plugins.dev_tools.image"), -- Image viewing support within Neovim
+		require("plugins.dev_tools.otter"), -- inline python lsp in markdown
 	},
 
 	-- Coding Assistance
