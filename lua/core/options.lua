@@ -27,7 +27,6 @@ vim.wo.number = true -- Show line numbers
 vim.wo.relativenumber = true -- Show relative line numbers
 
 -- Appearance
--- vim.opt.transparent = true  -- Uncomment to enable transparency
 vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermbg = "NONE" })
 vim.api.nvim_set_hl(0, "NonText", { bg = "NONE", ctermbg = "NONE" })
 vim.opt.laststatus = 3 -- Global statusline
@@ -36,13 +35,8 @@ vim.opt.laststatus = 3 -- Global statusline
 vim.cmd([[highlight NotifyBackground guibg=#000000]])
 
 -- -- File type associations
-vim.filetype.add({
-	extension = {
-		qmd = "markdown",
-	},
-})
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "quarto", "markdown" }, -- Add the filetypes you want to use otter with
+	pattern = { "quarto" }, -- Add the filetypes you want to use otter with
 	callback = function()
 		require("otter").activate()
 	end,
