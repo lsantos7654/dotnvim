@@ -46,6 +46,7 @@ require("lazy").setup({
 		require("plugins.ui_visual.marks"),  -- visual marks
 		require("plugins.ui_visual.context"),  -- treesitter context
 		require("plugins.ui_visual.markdown-utils"),  -- treesitter context
+		require("plugins.ui_visual.csv"),  -- treesitter context
 	},
 
 	-- Development Tools

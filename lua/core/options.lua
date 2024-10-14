@@ -71,3 +71,8 @@ vim.opt.foldlevelstart = 99
 vim.opt.foldnestmax = 3
 vim.opt.foldminlines = 1
 vim.cmd([[highlight Folded guibg=#2d3149 guifg=#a9b1d6]])
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*.csv",
+	command = "CsvViewToggle",
+})
