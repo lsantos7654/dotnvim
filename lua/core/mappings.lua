@@ -1,7 +1,5 @@
 local M = {}
 
-local M = {}
-
 function _G.highlight_code_chunk(from_current_position)
 	local start_line, end_line
 
@@ -79,29 +77,29 @@ end
 M.qmd_python = {
 	n = {
 		["<leader>j"] = {
-			":lua goto_next_code_chunk()<CR>",
+			":lua goto_next_code_chunk()<CR>zz",
 			"Go to next code chunk",
 			opts = { noremap = true, silent = true },
 		},
 		["<leader>k"] = {
-			":lua goto_prev_code_chunk()<CR>",
+			":lua goto_prev_code_chunk()<CR>zz",
 			"Go to previous code chunk",
 			opts = { noremap = true, silent = true },
 		},
 		["<leader>J"] = {
-			":lua highlight_current_code_chunk()<CR>",
+			":lua highlight_current_code_chunk()<CR>zz",
 			"Highlight current code chunk",
 			opts = { noremap = true, silent = true },
 		},
 	},
 	v = {
 		["<leader>j"] = {
-			":lua goto_next_code_chunk()<CR>",
+			":lua goto_next_code_chunk()<CR>zz",
 			"Go to next code chunk",
 			opts = { noremap = true, silent = true },
 		},
 		["<leader>k"] = {
-			":lua goto_prev_code_chunk()<CR>",
+			":lua goto_prev_code_chunk()<CR>zz",
 			"Go to previous code chunk",
 			opts = { noremap = true, silent = true },
 		},
@@ -167,6 +165,12 @@ M.general = {
 		-- Indent and unindent selected lines
 		["<Tab>"] = { ">gv", "Indent line" },
 		["<S-Tab>"] = { "<gv", "Unindent line" },
+
+		-- Window navigation
+		["<C-h>"] = { "<cmd> TmuxNavigateLeft<CR>", "Window left" },
+		["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "Window right" },
+		["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "Window down" },
+		["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "Window up" },
 
 		-- Quick navigation using Alt key
 		["<M-h>"] = { "^", "Move to beginning of previous word" },
