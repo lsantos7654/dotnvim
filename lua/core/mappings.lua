@@ -88,7 +88,7 @@ M.qmd_python = {
 			"Go to previous code chunk",
 			opts = { noremap = true, silent = true },
 		},
-		["<leader>H"] = {
+		["<leader>J"] = {
 			":lua highlight_current_code_chunk()<CR>",
 			"Highlight current code chunk",
 			opts = { noremap = true, silent = true },
@@ -156,7 +156,9 @@ M.general = {
 		["<leader>lp"] = { "<cmd>LspStop<CR>", "Stop LSP service" },
 		["<A-d>"] = { "<C-e><C-e>", "Scroll window down" },
 		["<A-u>"] = { "<C-y><C-y>", "Scroll window up" },
+		["<leader>tl"] = { ":set number! relativenumber!<CR>", "Toggle line numbers" },
 	},
+
 	v = {
 		-- Smart j and k: move by visual lines if wrapping is enabled
 		["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
@@ -183,24 +185,33 @@ M.general = {
 
 		-- Extras
 		["<C-n>"] = { "<cmd>qall<CR>", "Quit Nvim" },
-		["<A-d>"] = { "<C-e><C-e>", "Scroll window down" },
-		["<A-u>"] = { "<C-y><C-y>", "Scroll window up" },
 
 		-- Cursor follows split
 		["<C-w>v"] = { "<C-w>v<C-w>l", "Vertical Split" },
 		["<C-w>s"] = { "<C-w>s<C-w>j", "Horizontal Split" },
 	},
+
 	x = {
 		["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
 		["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
 		["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Don't copy replaced text", opts = { silent = true } },
 	},
+
 	i = {
 		["<C-h>"] = { "<cmd> TmuxNavigateLeft<CR>", "Window left" },
 		["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "Window right" },
 		["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "Window down" },
 		["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "Window up" },
 		["<M-v>"] = { "<C-r>+", "Paste from clipboard" },
+
+		-- Custom Alt mappings
+		["<M-h>"] = { "<Esc>bi", "Move to beginning of previous word" },
+		["<M-l>"] = { "<Esc>ea", "Move to end of current word" },
+		["<M-j>"] = { "<Esc>ji", "Move to next paragraph" },
+		["<M-k>"] = { "<Esc>ki", "Move to previous paragraph" },
+		["<M-n>"] = { "<Esc>%i", "Move to matching bracket" },
+		["<M-i>"] = { "<ESC>^i", "Move to next paragraph" },
+		["<M-a>"] = { "<ESC>$a", "Move to end of current word" },
 	},
 }
 
@@ -570,6 +581,7 @@ M.tab = {
 		["<Tab>"] = { "<Cmd>BufferNext<CR>", "Jump to next tab" },
 		["<S-Tab>"] = { "<Cmd>BufferPrevious<CR>", "Jump to previous tab" },
 		["<leader>x"] = { "<Cmd>BufferClose<CR>", "Close Buffer" },
+		["<leader>X"] = { "<Cmd>BufferCloseAllButCurrent<CR>", "Close all but current Buffer" },
 		["<leader>1"] = { "<Cmd>BufferGoto 1<CR>", "Jump to tab 1" },
 		["<leader>2"] = { "<Cmd>BufferGoto 2<CR>", "Jump to tab 2" },
 		["<leader>3"] = { "<Cmd>BufferGoto 3<CR>", "Jump to tab 3" },
@@ -580,6 +592,14 @@ M.tab = {
 		["<leader>8"] = { "<Cmd>BufferGoto 8<CR>", "Jump to tab 8" },
 		["<leader>9"] = { "<Cmd>BufferGoto 9<CR>", "Jump to tab 9" },
 		["<leader>="] = { "<cmd>wincmd =<CR>", "Equalize windows" },
+		["<leader>H"] = { "<Cmd>BufferMovePrevious<CR>", "Equalize windows" },
+		["<leader>L"] = { "<Cmd>BufferMoveNext<CR>", "Jump to tab 9" },
+	},
+}
+
+M.undo = {
+	n = {
+		["<leader>u"] = { "<cmd>UndotreeToggle<cr>", "Toggle Undotree" },
 	},
 }
 

@@ -52,6 +52,7 @@ require("lazy").setup({
 		-- Version Control
 		require("plugins.dev_tools.fugitive"), -- Git integration
 		require("plugins.dev_tools.gitsigns"), -- Show git changes in the sign column
+		require("plugins.dev_tools.undo"), -- Show git changes in the sign column
 
 		-- Terminal Integration
 		require("plugins.dev_tools.nvterm"), -- Better terminal integration
