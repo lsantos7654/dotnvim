@@ -1,26 +1,45 @@
 local M = {}
 
-function _G.highlight_code_chunk()
-	-- Move to the start of the code block
-	vim.fn.search("^```{python}", "bc")
+local M = {}
+
+function _G.highlight_code_chunk(from_current_position)
+	local start_line, end_line
+
+	if from_current_position then
+		-- Search backwards for the start of the code block
+		start_line = vim.fn.search("^```{python}", "bnW")
+		-- If not found, we're not in a code chunk
+		if start_line == 0 then
+			return
+		end
+		-- Search forwards for the end of the code block
+		end_line = vim.fn.search("^```$", "nW")
+	else
+		-- Move to the start of the code block
+		start_line = vim.fn.search("^```{python}", "bc")
+		end_line = vim.fn.search("^```$", "W")
+	end
 
 	-- Move to the first non-comment line
-	local start_line = vim.fn.line(".")
+	local code_start_line = start_line
 	while true do
-		start_line = start_line + 1
-		local line_content = vim.fn.getline(start_line)
+		code_start_line = code_start_line + 1
+		local line_content = vim.fn.getline(code_start_line)
 		if not line_content:match("^%s*#") and line_content:match("%S") then
 			break
+		end
+		if code_start_line >= end_line - 1 then
+			-- If all lines are comments, don't highlight anything
+			return
 		end
 	end
 
 	-- Start visual mode from the first non-comment line
-	vim.fn.cursor(start_line, 1)
+	vim.fn.cursor(code_start_line, 1)
 	vim.cmd("normal! V")
 
-	-- Move to the end of the code block
-	vim.fn.search("^```$", "W")
-	vim.cmd("normal! k") -- Move up one line to exclude the closing ```
+	-- Move to the line before the end of the code block
+	vim.fn.cursor(end_line - 1, 1)
 end
 
 function _G.goto_next_code_chunk()
@@ -30,8 +49,7 @@ function _G.goto_next_code_chunk()
 
 	vim.fn.search("^```$", "cW")
 	if vim.fn.search("^```{python}", "W") ~= 0 then
-		_G.highlight_code_chunk()
-		vim.cmd("normal! j")
+		_G.highlight_code_chunk(false)
 	end
 end
 
@@ -44,34 +62,46 @@ function _G.goto_prev_code_chunk()
 	vim.fn.search("^```{python}", "bcW")
 
 	if vim.fn.search("^```{python}", "bW") ~= 0 then
-		_G.highlight_code_chunk()
-		vim.cmd("normal! j")
+		_G.highlight_code_chunk(false)
 	else
 		vim.fn.setpos(".", current_pos)
 	end
 end
 
+function _G.highlight_current_code_chunk()
+	if vim.fn.mode():match("[vV]") then
+		vim.cmd("normal! <Esc>")
+	end
+
+	_G.highlight_code_chunk(true)
+end
+
 M.qmd_python = {
 	n = {
-		["<leader>]"] = {
-			":lua goto_next_code_chunk()<CR>k",
+		["<leader>j"] = {
+			":lua goto_next_code_chunk()<CR>",
 			"Go to next code chunk",
 			opts = { noremap = true, silent = true },
 		},
-		["<leader>["] = {
-			":lua goto_prev_code_chunk()<CR>k",
+		["<leader>k"] = {
+			":lua goto_prev_code_chunk()<CR>",
 			"Go to previous code chunk",
+			opts = { noremap = true, silent = true },
+		},
+		["<leader>H"] = {
+			":lua highlight_current_code_chunk()<CR>",
+			"Highlight current code chunk",
 			opts = { noremap = true, silent = true },
 		},
 	},
 	v = {
-		["<leader>]"] = {
-			":lua goto_next_code_chunk()<CR>k",
+		["<leader>j"] = {
+			":lua goto_next_code_chunk()<CR>",
 			"Go to next code chunk",
 			opts = { noremap = true, silent = true },
 		},
-		["<leader>["] = {
-			":lua goto_prev_code_chunk()<CR>k",
+		["<leader>k"] = {
+			":lua goto_prev_code_chunk()<CR>",
 			"Go to previous code chunk",
 			opts = { noremap = true, silent = true },
 		},
@@ -450,6 +480,9 @@ M.git = {
 
 M.zen = {
 	n = {
+		["<leader>z"] = { "<cmd>ZenMode<CR>", "ZenMode" },
+	},
+	v = {
 		["<leader>z"] = { "<cmd>ZenMode<CR>", "ZenMode" },
 	},
 }
