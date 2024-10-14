@@ -1,6 +1,82 @@
--- mappings.lua
-
 local M = {}
+
+function _G.highlight_code_chunk()
+	-- Move to the start of the code block
+	vim.fn.search("^```{python}", "bc")
+
+	-- Move to the first non-comment line
+	local start_line = vim.fn.line(".")
+	while true do
+		start_line = start_line + 1
+		local line_content = vim.fn.getline(start_line)
+		if not line_content:match("^%s*#") and line_content:match("%S") then
+			break
+		end
+	end
+
+	-- Start visual mode from the first non-comment line
+	vim.fn.cursor(start_line, 1)
+	vim.cmd("normal! V")
+
+	-- Move to the end of the code block
+	vim.fn.search("^```$", "W")
+	vim.cmd("normal! k") -- Move up one line to exclude the closing ```
+end
+
+function _G.goto_next_code_chunk()
+	if vim.fn.mode():match("[vV]") then
+		vim.cmd("normal! <Esc>")
+	end
+
+	vim.fn.search("^```$", "cW")
+	if vim.fn.search("^```{python}", "W") ~= 0 then
+		_G.highlight_code_chunk()
+		vim.cmd("normal! j")
+	end
+end
+
+function _G.goto_prev_code_chunk()
+	if vim.fn.mode():match("[vV]") then
+		vim.cmd("normal! <Esc>")
+	end
+
+	local current_pos = vim.fn.getcurpos()
+	vim.fn.search("^```{python}", "bcW")
+
+	if vim.fn.search("^```{python}", "bW") ~= 0 then
+		_G.highlight_code_chunk()
+		vim.cmd("normal! j")
+	else
+		vim.fn.setpos(".", current_pos)
+	end
+end
+
+M.qmd_python = {
+	n = {
+		["<leader>]"] = {
+			":lua goto_next_code_chunk()<CR>k",
+			"Go to next code chunk",
+			opts = { noremap = true, silent = true },
+		},
+		["<leader>["] = {
+			":lua goto_prev_code_chunk()<CR>k",
+			"Go to previous code chunk",
+			opts = { noremap = true, silent = true },
+		},
+	},
+	v = {
+		["<leader>]"] = {
+			":lua goto_next_code_chunk()<CR>k",
+			"Go to next code chunk",
+			opts = { noremap = true, silent = true },
+		},
+		["<leader>["] = {
+			":lua goto_prev_code_chunk()<CR>k",
+			"Go to previous code chunk",
+			opts = { noremap = true, silent = true },
+		},
+	},
+}
 
 -- General mappings
 M.general = {
@@ -28,8 +104,10 @@ M.general = {
 		["<C-w>s"] = { "<C-w>s<C-w>j", "Horizontal Split" },
 
 		-- Custom Alt mappings
-		["<M-h>"] = { "^", "Move to beginning of previous word" },
-		["<M-l>"] = { "$", "Move to end of current word" },
+		["<M-h>"] = { "b", "Move to beginning of previous word" },
+		["<M-l>"] = { "e", "Move to end of current word" },
+		["H"] = { "^", "Move to next paragraph" },
+		["L"] = { "$", "Move to end of current word" },
 		["<M-j>"] = { "}", "Move to next paragraph" },
 		["<M-k>"] = { "{", "Move to previous paragraph" },
 		["<M-n>"] = { "%", "Move to matching bracket" },
@@ -70,6 +148,11 @@ M.general = {
 		["K"] = { ":m '<-2<CR>gv=gv", "Move text up" },
 
 		-- Scroll window up and down
+		["<A-d>"] = { "<C-e><C-e>", "Scroll window down" },
+		["<A-u>"] = { "<C-y><C-y>", "Scroll window up" },
+
+		-- Extras
+		["<C-n>"] = { "<cmd>qall<CR>", "Quit Nvim" },
 		["<A-d>"] = { "<C-e><C-e>", "Scroll window down" },
 		["<A-u>"] = { "<C-y><C-y>", "Scroll window up" },
 
@@ -392,7 +475,10 @@ M.oil = {
 M.marks = {
 	n = {
 		["<leader>dm"] = { "<cmd>delmarks! | delmarks A-Z<CR>", "Delete all marks in buffer (lowercase and uppercase)" },
-		["<leader>dM"] = { "<cmd>delmarks! | delmarks A-Z | wshada!<CR>", "Delete all marks (including global and uppercase)" },
+		["<leader>dM"] = {
+			"<cmd>delmarks! | delmarks A-Z | wshada!<CR>",
+			"Delete all marks (including global and uppercase)",
+		},
 	},
 }
 
