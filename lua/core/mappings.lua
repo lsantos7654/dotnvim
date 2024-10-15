@@ -207,6 +207,8 @@ M.general = {
 		["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "Window down" },
 		["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "Window up" },
 		["<M-v>"] = { "<C-r>+", "Paste from clipboard" },
+		["<Tab>"] = { "<C-t>", "Indent line" },
+		["<S-Tab>"] = { "<C-d>", "Unindent line" },
 
 		-- Custom Alt mappings
 		["<M-h>"] = { "<Esc>bi", "Move to beginning of previous word" },
