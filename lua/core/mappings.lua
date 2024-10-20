@@ -209,15 +209,17 @@ M.general = {
 		["<M-v>"] = { "<C-r>+", "Paste from clipboard" },
 		["<Tab>"] = { "<C-t>", "Indent line" },
 		["<S-Tab>"] = { "<C-d>", "Unindent line" },
+		["<M-BS>"] = { "<C-o>db", "delete word (backward)" },
+		["<M-d>"] = { "<C-o>dw", "delete word (backward)" },
 
 		-- Custom Alt mappings
-		["<M-h>"] = { "<Esc>i", "Move to beginning of previous word" },
-		["<M-l>"] = { "<Esc>la", "Move to end of current word" },
-		["<M-j>"] = { "<Esc>ji", "Move to next paragraph" },
-		["<M-k>"] = { "<Esc>ki", "Move to previous paragraph" },
-		["<M-n>"] = { "<Esc>%i", "Move to matching bracket" },
-		["<M-i>"] = { "<ESC>^i", "Move to next paragraph" },
-		["<M-a>"] = { "<ESC>$a", "Move to end of current word" },
+		["<M-h>"] = { "<C-o>h", "Move left 1" },
+		["<M-l>"] = { "<C-o>l", "Move right 1" },
+		["<M-j>"] = { "<C-o>j", "Move down 1" },
+		["<M-k>"] = { "<C-o>k", "Move up 1" },
+		["<M-n>"] = { "<C-o>%", "Move to matching bracket" },
+		["<M-i>"] = { "<C-o>^", "Move to beginning of line" },
+		["<M-a>"] = { "<C-o>$", "Move to end of line" },
 	},
 }
 
