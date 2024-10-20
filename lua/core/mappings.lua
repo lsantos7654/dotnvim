@@ -211,8 +211,8 @@ M.general = {
 		["<S-Tab>"] = { "<C-d>", "Unindent line" },
 
 		-- Custom Alt mappings
-		["<M-h>"] = { "<Esc>bi", "Move to beginning of previous word" },
-		["<M-l>"] = { "<Esc>ea", "Move to end of current word" },
+		["<M-h>"] = { "<Esc>i", "Move to beginning of previous word" },
+		["<M-l>"] = { "<Esc>la", "Move to end of current word" },
 		["<M-j>"] = { "<Esc>ji", "Move to next paragraph" },
 		["<M-k>"] = { "<Esc>ki", "Move to previous paragraph" },
 		["<M-n>"] = { "<Esc>%i", "Move to matching bracket" },
