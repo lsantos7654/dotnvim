@@ -43,9 +43,9 @@ return {
 				implicit_extension = nil,
 				transform_implicit = false,
 				transform_explicit = function(text)
-					text = text:gsub(" ", "-")
+					text = text:gsub(" ", "_")
 					text = text:lower()
-					text = os.date("%Y-%m-%d_") .. text
+					-- text = os.date("%Y-%m-%d_") .. text
 					return text
 				end,
 				create_on_follow_failure = true,
