@@ -649,6 +649,25 @@ function apply_formatting(start_marker, end_marker, description)
 	vim.api.nvim_buf_set_lines(0, start_line - 1, start_line, false, { new_line })
 end
 
+function apply_formatting_line(start_marker, end_marker, description)
+	local start_line = vim.fn.line("v")
+	local end_line = vim.fn.line(".")
+
+	-- Ensure start is before end
+	if start_line > end_line then
+		start_line, end_line = end_line, start_line
+	end
+
+	-- Get the line content
+	local line = vim.api.nvim_buf_get_lines(0, start_line - 1, start_line, false)[1]
+
+	-- Apply formatting to the entire line
+	local new_line = start_marker .. line .. end_marker
+
+	-- Set the modified line
+	vim.api.nvim_buf_set_lines(0, start_line - 1, start_line, false, { new_line })
+end
+
 M.markdown = {
 	n = {
 		["<leader>mb"] = {
@@ -665,7 +684,25 @@ M.markdown = {
 		},
 		["<leader>ms"] = {
 			function()
-				apply_formatting("~~", "~~", "Add strikethrough to selected word")
+				apply_formatting_line("~~", "~~", "Add strikethrough to selected word")
+			end,
+			"Add strikethrough to selected word",
+		},
+		["<leader>mB"] = {
+			function()
+				apply_formatting_line("**", "**", "Make selected word bold")
+			end,
+			"Make selected word bold",
+		},
+		["<leader>mI"] = {
+			function()
+				apply_formatting_line("*", "*", "Make selected word italic")
+			end,
+			"Make selected word italic",
+		},
+		["<leader>mS"] = {
+			function()
+				apply_formatting_line("~~", "~~", "Add strikethrough to selected word")
 			end,
 			"Add strikethrough to selected word",
 		},
@@ -729,6 +766,24 @@ M.markdown = {
 		["<leader>ms"] = {
 			function()
 				apply_formatting("~~", "~~", "Add strikethrough to selected word")
+			end,
+			"Add strikethrough to selected word",
+		},
+		["<leader>mB"] = {
+			function()
+				apply_formatting_line("**", "**", "Make selected word bold")
+			end,
+			"Make selected word bold",
+		},
+		["<leader>mI"] = {
+			function()
+				apply_formatting_line("*", "*", "Make selected word italic")
+			end,
+			"Make selected word italic",
+		},
+		["<leader>mS"] = {
+			function()
+				apply_formatting_line("~~", "~~", "Add strikethrough to selected word")
 			end,
 			"Add strikethrough to selected word",
 		},
