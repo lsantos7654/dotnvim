@@ -621,7 +621,7 @@ M.markdown = {
 				end
 				local lines = vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
 				for i, line in ipairs(lines) do
-					lines[i] = i .. "." .. line:gsub("^%d+%.", ""):gsub("^%s*", "")
+					lines[i] = i .. ". " .. line:gsub("^%d+%.", ""):gsub("^%s*", "")
 				end
 				vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, lines)
 			end,
