@@ -611,6 +611,53 @@ M.undo = {
 	},
 }
 
+M.markdown = {
+	v = {
+		["<leader>mn"] = {
+			function()
+				local start_line, end_line = vim.fn.line("v"), vim.fn.line(".")
+				if start_line > end_line then
+					start_line, end_line = end_line, start_line
+				end
+				local lines = vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
+				for i, line in ipairs(lines) do
+					lines[i] = i .. "." .. line:gsub("^%d+%.", ""):gsub("^%s*", "")
+				end
+				vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, lines)
+			end,
+			"Enumerate selected lines",
+		},
+		["<leader>mc"] = {
+			function()
+				local start_line, end_line = vim.fn.line("v"), vim.fn.line(".")
+				if start_line > end_line then
+					start_line, end_line = end_line, start_line
+				end
+				local lines = vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
+				for i, line in ipairs(lines) do
+					lines[i] = "- [ ] " .. line:gsub("^%- %[.?%] ", ""):gsub("^%- ", ""):gsub("^%s*", "")
+				end
+				vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, lines)
+			end,
+			"Add markdown checklist to selected lines",
+		},
+		["<leader>mb"] = {
+			function()
+				local start_line, end_line = vim.fn.line("v"), vim.fn.line(".")
+				if start_line > end_line then
+					start_line, end_line = end_line, start_line
+				end
+				local lines = vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
+				for i, line in ipairs(lines) do
+					lines[i] = "- " .. line:gsub("^%- ", ""):gsub("^%s*", "")
+				end
+				vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, lines)
+			end,
+			"Add bullet points to selected lines",
+		},
+	},
+}
+
 -- M.leetcode = {
 -- 	n = {
 -- 		["<leader>lt"] = { "<cmd>Leet test<CR>", "Run test cases" },
