@@ -537,7 +537,7 @@ M.marks = {
 M.molten = {
 	n = {
 		["<leader>m<CR>"] = { "<cmd>noautocmd MoltenEnterOutput<CR>", "Molten Enter Output" },
-		["<leader>mi"] = { "<cmd>MoltenDeinit<CR>", "Deinitialize Molten" },
+		["<leader>mD"] = { "<cmd>MoltenDeinit<CR>", "Deinitialize Molten" },
 		["<leader>mo"] = { "<cmd>MoltenHideOutput<CR>", "Hide Molten Output" },
 		["<leader>r"] = { "<cmd>MoltenEvaluateLine<CR>", "Evaluate line" },
 		["<leader>rr"] = { "<cmd>MoltenReevaluateCell<CR>", "Re-evaluate cell" },
@@ -611,7 +611,65 @@ M.undo = {
 	},
 }
 
+-- Helper function to apply formatting
+function apply_formatting(start_marker, end_marker, description)
+	local start_line = vim.fn.line("v")
+	local end_line = vim.fn.line(".")
+	local start_col = vim.fn.col("v")
+	local end_col = vim.fn.col(".")
+
+	-- Ensure start is before end
+	if start_line > end_line or (start_line == end_line and start_col > end_col) then
+		start_line, end_line = end_line, start_line
+		start_col, end_col = end_col, start_col
+	end
+
+	-- Get the line content
+	local line = vim.api.nvim_buf_get_lines(0, start_line - 1, start_line, false)[1]
+
+	-- Find word boundaries
+	local word_start = start_col
+	local word_end = end_col
+
+	while word_start > 1 and line:sub(word_start - 1, word_start - 1):match("%w") do
+		word_start = word_start - 1
+	end
+	while word_end <= #line and line:sub(word_end, word_end):match("%w") do
+		word_end = word_end + 1
+	end
+
+	-- Apply formatting to the entire word
+	local new_line = line:sub(1, word_start - 1)
+		.. start_marker
+		.. line:sub(word_start, word_end - 1)
+		.. end_marker
+		.. line:sub(word_end)
+
+	-- Set the modified line
+	vim.api.nvim_buf_set_lines(0, start_line - 1, start_line, false, { new_line })
+end
+
 M.markdown = {
+	n = {
+		["<leader>mb"] = {
+			function()
+				apply_formatting("**", "**", "Make selected word bold")
+			end,
+			"Make selected word bold",
+		},
+		["<leader>mi"] = {
+			function()
+				apply_formatting("*", "*", "Make selected word italic")
+			end,
+			"Make selected word italic",
+		},
+		["<leader>ms"] = {
+			function()
+				apply_formatting("~~", "~~", "Add strikethrough to selected word")
+			end,
+			"Add strikethrough to selected word",
+		},
+	},
 	v = {
 		["<leader>mn"] = {
 			function()
@@ -641,7 +699,7 @@ M.markdown = {
 			end,
 			"Add markdown checklist to selected lines",
 		},
-		["<leader>mb"] = {
+		["<leader>ml"] = {
 			function()
 				local start_line, end_line = vim.fn.line("v"), vim.fn.line(".")
 				if start_line > end_line then
@@ -654,6 +712,25 @@ M.markdown = {
 				vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, lines)
 			end,
 			"Add bullet points to selected lines",
+		},
+
+		["<leader>mb"] = {
+			function()
+				apply_formatting("**", "**", "Make selected word bold")
+			end,
+			"Make selected word bold",
+		},
+		["<leader>mi"] = {
+			function()
+				apply_formatting("*", "*", "Make selected word italic")
+			end,
+			"Make selected word italic",
+		},
+		["<leader>ms"] = {
+			function()
+				apply_formatting("~~", "~~", "Add strikethrough to selected word")
+			end,
+			"Add strikethrough to selected word",
 		},
 	},
 }

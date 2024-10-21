@@ -44,7 +44,7 @@ return {
 				transform_implicit = false,
 				transform_explicit = function(text)
 					text = text:gsub(" ", "_")
-					text = text:lower()
+					-- text = text:lower()
 					-- text = os.date("%Y-%m-%d_") .. text
 					return text
 				end,
@@ -103,7 +103,7 @@ return {
 				bib = { override = false },
 			},
 			mappings = {
-				MkdnEnter = { { "n" }, "<CR>" },
+				MkdnEnter = { { "n", "i", "v" }, "<CR>" },
 				MkdnTab = false,
 				MkdnSTab = false,
 				MkdnNextLink = false,
