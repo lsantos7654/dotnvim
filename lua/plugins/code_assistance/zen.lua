@@ -27,7 +27,7 @@ return {
 			tmux = { enabled = true },
 			kitty = {
 				enabled = true,
-				font = "+4",
+				font = "+0",
 			},
 		},
 		on_open = function(win)
