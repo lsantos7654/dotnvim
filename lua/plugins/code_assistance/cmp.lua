@@ -15,6 +15,11 @@ return {
 				require("luasnip.loaders.from_snipmate").lazy_load()
 				require("luasnip.loaders.from_lua").lazy_load()
 
+				-- Add custom snippet for Quarto code blocks
+				luasnip.add_snippets("quarto", {
+					luasnip.parser.parse_snippet("```", "```{$1}\n$0\n``"),
+				})
+
 				vim.api.nvim_create_autocmd("InsertLeave", {
 					callback = function()
 						if
