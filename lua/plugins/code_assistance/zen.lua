@@ -24,7 +24,7 @@ return {
 			},
 			twilight = { enabled = false },
 			gitsigns = { enabled = true },
-			tmux = { enabled = true },
+			tmux = { enabled = false },
 		},
 		on_open = function(win)
 			-- Custom code when Zen window opens

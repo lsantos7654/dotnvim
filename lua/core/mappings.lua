@@ -212,6 +212,10 @@ M.general = {
 		["<M-BS>"] = { "<C-o>db", "delete word (backward)" },
 		["<M-d>"] = { "<C-o>dw", "delete word (backward)" },
 
+		-- Line operations
+		["<M-P>"] = { "<cmd>pu<CR>", "Paste below" },
+		["<M-p>"] = { "<C-o>p", "Paste inline" },
+
 		-- Custom Alt mappings
 		["<M-h>"] = { "<C-o>h", "Move left 1" },
 		["<M-l>"] = { "<C-o>l", "Move right 1" },
@@ -539,6 +543,8 @@ M.molten = {
 		["<leader>m<CR>"] = { "<cmd>noautocmd MoltenEnterOutput<CR>", "Molten Enter Output" },
 		["<leader>mD"] = { "<cmd>MoltenDeinit<CR>", "Deinitialize Molten" },
 		["<leader>mo"] = { "<cmd>MoltenHideOutput<CR>", "Hide Molten Output" },
+		["<leader>mks"] = { "<cmd>MoltenSave<CR>", "Molten Save" },
+		["<leader>mkl"] = { "<cmd>MoltenLoad<CR>", "Molten Load" },
 		["<leader>r"] = { "<cmd>MoltenEvaluateLine<CR>", "Evaluate line" },
 		["<leader>rr"] = { "<cmd>MoltenReevaluateCell<CR>", "Re-evaluate cell" },
 		["]b"] = { "<cmd>MoltenNext<CR>", "Next molten block" },
