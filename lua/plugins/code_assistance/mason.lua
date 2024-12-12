@@ -2,7 +2,7 @@ local options = {
 	ensure_installed = {
 		"pyright",
 		"debugpy",
-		"ruff-lsp",
+		"ruff",
 		"mypy",
 		"black",
 		"stylua",
