@@ -1,6 +1,6 @@
 return {
 	"jose-elias-alvarez/null-ls.nvim",
-	ft = { "python", "lua", "cpp", "json", "sh", "bash", "zsh", "javascript" },
+	ft = { "python", "lua", "cpp", "json", "yaml", "sh", "bash", "zsh", "javascript" },
 	opts = function(_, opts)
 		local null_ls = require("null-ls")
 		opts.sources = {
@@ -22,7 +22,7 @@ return {
 
 			-- HTML, CSS, JavaScript, TypeScript, JSON
 			null_ls.builtins.formatting.prettier.with({
-				filetypes = { "html", "css", "javascript", "typescript", "json" },
+				filetypes = { "html", "css", "javascript", "typescript", "json", "yaml" },
 			}),
 
 			-- JavaScript specific
