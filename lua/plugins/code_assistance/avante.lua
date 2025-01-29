@@ -3,14 +3,24 @@ return {
 	event = "VeryLazy",
 	version = false,
 	opts = {
+		provider = "deepseek", -- Set this as the default provider
 		mappings = {
 			ask = "<A-a>",
 			edit = "<A-e>",
 		},
 		hints = { enabled = false },
+		vendors = {
+			["deepseek"] = {
+				__inherited_from = "openai", -- Inherit OpenAI's base configuration
+				endpoint = "http://deepseek-r1.clusters.corp.theaiinstitute.com/v1",
+				model = "default",
+				api_key = "EMPTY",
+				timeout = 30000,
+				temperature = 0.6,
+				max_tokens = 2048,
+			},
+		},
 	},
-	-- build = "make BUILD_FROM_SOURCE=true",
-	build = "make",
 	dependencies = {
 		"stevearc/dressing.nvim",
 		"nvim-lua/plenary.nvim",
@@ -31,8 +41,8 @@ return {
 		},
 		{
 			"MeanderingProgrammer/render-markdown.nvim",
-			opts = { file_types = { "markdown", "Avante", "quarto" } },
-			ft = { "markdown", "Avante", "quarto" },
+			opts = { file_types = { "markdown", "quarto" } },
+			ft = { "markdown", "quarto" },
 		},
 	},
 }
