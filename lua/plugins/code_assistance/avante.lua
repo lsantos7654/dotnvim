@@ -19,6 +19,8 @@ return {
 			},
 		},
 	},
+	-- build = "make BUILD_FROM_SOURCE=true",
+	build = "make",
 	dependencies = {
 		"stevearc/dressing.nvim",
 		"nvim-lua/plenary.nvim",
