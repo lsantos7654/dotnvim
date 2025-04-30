@@ -502,7 +502,8 @@ M.gitsigns = {
 M.git = {
 	n = {
 		["<leader>gh"] = { "<cmd>G<CR>:only<CR>", "Open Git" },
-		["<leader>gl"] = { "<cmd>G log --graph --decorate<CR>:only<CR>", "Git Log" },
+		["<leader>gl"] = { "<cmd>G log --graph --decorate -n 50<CR>:only<CR>", "Git Log (50 commits)" },
+		["<leader>gL"] = { "<cmd>G log --graph --decorate<CR>:only<CR>", "Git Log" },
 		["<leader>hc"] = { "/[*] commit \\x\\+<CR>n", "Highlight commits" },
 	},
 }
