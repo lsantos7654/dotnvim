@@ -48,6 +48,7 @@ require("lazy").setup({
 		require("plugins.ui_visual.markdown-utils"),  -- treesitter context
 		require("plugins.ui_visual.csv"),  -- treesitter context
 		require("plugins.ui_visual.nabla"),  -- treesitter context
+		require("plugins.ui_visual.log-highlight"), -- treesitter context
 	},
 
 	-- Development Tools
