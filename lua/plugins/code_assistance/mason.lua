@@ -4,7 +4,6 @@ local options = {
 		"debugpy",
 		"ruff",
 		"mypy",
-		"black",
 		"stylua",
 		"clangd",
 		"clang-format",

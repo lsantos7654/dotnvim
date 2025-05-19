@@ -4,9 +4,6 @@ return {
 	opts = function(_, opts)
 		local null_ls = require("null-ls")
 		opts.sources = {
-			-- Python Setup
-			null_ls.builtins.formatting.black,
-
 			-- Lua Setup
 			null_ls.builtins.formatting.stylua,
 
