@@ -1,9 +1,12 @@
 return {
 	"jose-elias-alvarez/null-ls.nvim",
-	ft = { "python", "lua", "cpp", "json", "yaml", "sh", "bash", "zsh", "javascript" },
+	ft = { "python", "lua", "cpp", "json", "yaml", "sh", "bash", "zsh", "javascript", "bzl" },
 	opts = function(_, opts)
 		local null_ls = require("null-ls")
 		opts.sources = {
+			-- Bazel
+			null_ls.builtins.formatting.buildifier,
+
 			-- Lua Setup
 			null_ls.builtins.formatting.stylua,
 

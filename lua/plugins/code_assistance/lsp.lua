@@ -1,7 +1,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	cmd = { "LspInfo", "LspInstall", "LspStart" },
-	event = {'BufReadPre', 'BufNewFile'},
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "williamboman/mason.nvim" },
@@ -19,10 +19,21 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = {},
 			handlers = {
-				-- this first function is the "default handler"
-				-- it applies to every language server without a "custom handler"
+				-- Default handler
 				function(server_name)
 					require("lspconfig")[server_name].setup({})
+				end,
+
+				-- Specific bzl handler
+				bzl = function()
+					require("lspconfig").bzl.setup({
+						root_dir = require("lspconfig.util").root_pattern(
+							"MODULE.bazel",
+							"WORKSPACE",
+							"WORKSPACE.bazel",
+							".git"
+						),
+					})
 				end,
 			},
 		})
