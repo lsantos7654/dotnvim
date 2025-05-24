@@ -35,19 +35,19 @@ require("lazy").setup({
 		require("plugins.ui_visual.treesitter"), -- Advanced syntax highlighting and code analysis
 		require("plugins.ui_visual.codewindow"), -- Minimap-style code outline
 		require("plugins.ui_visual.web-devicons"), -- File icons for various plugins
-		require("plugins.ui_visual.noice"),  -- Enhance UI for commandline, messages, and popupmenu
+		require("plugins.ui_visual.noice"), -- Enhance UI for commandline, messages, and popupmenu
 		require("plugins.ui_visual.notify"), -- Fancy notification system
-		require("plugins.ui_visual.tabs"),   -- Enhanced tab management
+		require("plugins.ui_visual.tabs"), -- Enhanced tab management
 		require("plugins.ui_visual.blankline"), -- Show indentation guides
 		require("plugins.ui_visual.whichkey"), -- Interactive keybinding helper
 		require("plugins.ui_visual.status"), -- Customizable status line
-		require("plugins.ui_visual.theme"),  -- Color scheme and theming
-		require("plugins.ui_visual.todo"),  -- pretty todo messages with telescope
-		require("plugins.ui_visual.marks"),  -- visual marks
-		require("plugins.ui_visual.context"),  -- treesitter context
-		require("plugins.ui_visual.markdown-utils"),  -- treesitter context
-		require("plugins.ui_visual.csv"),  -- treesitter context
-		require("plugins.ui_visual.nabla"),  -- treesitter context
+		require("plugins.ui_visual.theme"), -- Color scheme and theming
+		require("plugins.ui_visual.todo"), -- pretty todo messages with telescope
+		require("plugins.ui_visual.marks"), -- visual marks
+		require("plugins.ui_visual.context"), -- treesitter context
+		require("plugins.ui_visual.markdown-utils"), -- treesitter context
+		require("plugins.ui_visual.csv"), -- treesitter context
+		require("plugins.ui_visual.nabla"), -- treesitter context
 		require("plugins.ui_visual.log-highlight"), -- treesitter context
 	},
 
@@ -60,7 +60,7 @@ require("lazy").setup({
 
 		-- Terminal Integration
 		require("plugins.dev_tools.nvterm"), -- Better terminal integration
-		{ "nvim-neotest/nvim-nio" },   -- Asynchronous I/O library (dependency for some plugins)
+		{ "nvim-neotest/nvim-nio" }, -- Asynchronous I/O library (dependency for some plugins)
 
 		-- Language Support
 		-- require("plugins.dev_tools.luarocks"), -- LuaRocks package manager integration
@@ -74,8 +74,7 @@ require("lazy").setup({
 		-- Language Server Protocol (LSP)
 		require("plugins.code_assistance.mason"), -- Manage LSP servers, linters, and formatters
 		require("plugins.code_assistance.lsp"), -- LSP configuration
-		require("plugins.code_assistance.lsp-zero"), -- Simplified LSP setup
-		require("plugins.code_assistance.null-ls"), -- Simplified LSP setup
+		require("plugins.code_assistance.conform"), -- Simplified LSP setup
 
 		-- Autocompletion
 		require("plugins.code_assistance.cmp"), -- Intelligent code completion

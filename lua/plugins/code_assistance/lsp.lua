@@ -8,32 +8,90 @@ return {
 		{ "williamboman/mason-lspconfig.nvim" },
 	},
 	config = function()
-		local lsp_zero = require("lsp-zero")
-
-		lsp_zero.extend_lspconfig({
-			sign_text = true,
-			lsp_attach = lsp_attach,
-			capabilities = require("cmp_nvim_lsp").default_capabilities(),
+		-- Enhanced diagnostics configuration
+		vim.diagnostic.config({
+			virtual_text = {
+				spacing = 4,
+				prefix = "●",
+			},
+			signs = true,
+			underline = true,
+			update_in_insert = false,
+			severity_sort = true,
 		})
 
+		-- Customize diagnostic signs
+		local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+		for type, icon in pairs(signs) do
+			local hl = "DiagnosticSign" .. type
+			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+		end
+
+		-- Use mason-lspconfig to automatically setup servers
 		require("mason-lspconfig").setup({
-			ensure_installed = {},
+			ensure_installed = {
+				"pyright",
+				"lua_ls", 
+				"clangd",
+				"jsonls",
+				"bashls",
+				"eslint",
+				"html",
+				"bzl"
+			},
 			handlers = {
-				-- Default handler
+				-- Default handler - uses vim.lsp.enable
 				function(server_name)
-					require("lspconfig")[server_name].setup({})
+					-- Enable the server with default config
+					vim.lsp.enable(server_name)
 				end,
 
-				-- Specific bzl handler
+				-- Custom configurations for specific servers
+				lua_ls = function()
+					vim.lsp.config('lua_ls', {
+						settings = {
+							Lua = {
+								diagnostics = {
+									globals = { 'vim' }
+								},
+								workspace = {
+									library = vim.api.nvim_get_runtime_file("", true),
+									checkThirdParty = false,
+								},
+								telemetry = {
+									enable = false,
+								},
+							}
+						}
+					})
+					vim.lsp.enable('lua_ls')
+				end,
+
+				pyright = function()
+					vim.lsp.config('pyright', {
+						settings = {
+							python = {
+								analysis = {
+									typeCheckingMode = "basic",
+									autoSearchPaths = true,
+									useLibraryCodeForTypes = true,
+								}
+							}
+						}
+					})
+					vim.lsp.enable('pyright')
+				end,
+
 				bzl = function()
-					require("lspconfig").bzl.setup({
+					vim.lsp.config('bzl', {
 						root_dir = require("lspconfig.util").root_pattern(
 							"MODULE.bazel",
-							"WORKSPACE",
+							"WORKSPACE", 
 							"WORKSPACE.bazel",
 							".git"
 						),
 					})
+					vim.lsp.enable('bzl')
 				end,
 			},
 		})

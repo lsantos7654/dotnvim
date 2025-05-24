@@ -113,10 +113,13 @@ M.general = {
 		["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
 		["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
 		["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
-		["<C-s>"] = { "<cmd> w <CR>", "Save file" },
+		["<C-s>"] = { "<cmd> w! <CR>", "Save file" },
 		["<leader>fm"] = {
 			function()
-				vim.lsp.buf.format({ async = true })
+				require("conform").format({
+					lsp_format = "fallback",
+					async = true,
+				})
 			end,
 			"LSP formatting",
 		},

@@ -1,25 +1,37 @@
 local options = {
 	ensure_installed = {
+		-- Language Servers
 		"pyright",
-		"debugpy",
-		"ruff",
-		"mypy",
-		"stylua",
-		"clangd",
-		"clang-format",
-		"codelldb",
 		"lua-language-server",
+		"clangd",
 		"json-lsp",
-		"fixjson",
-		"shellcheck",
-		"shfmt",
 		"bash-language-server",
 		"eslint-lsp",
-		"prettier",
 		"html-lsp",
-		"buildifier",
 		"bzl",
+
+		-- Debuggers
+		"debugpy",
+		"codelldb",
+
+		-- Linters
+		"ruff",
+		"mypy",
+		"shellcheck",
+
+		-- Formatters (for conform.nvim)
+		"stylua", -- Lua formatter
+		"black", -- Python formatter (backup)
+		"isort", -- Python import sorter (backup)
+		"ruff", -- Python formatter/linter (primary)
+		"prettier", -- Web tech formatter
+		"shfmt", -- Shell script formatter
+		"clang-format", -- C/C++ formatter
+		"buildifier", -- Bazel formatter
+		"codespell", -- Spell checker
+		"fixjson", -- JSON fixer
 	},
+
 	ui = {
 		icons = {
 			package_pending = " ",
