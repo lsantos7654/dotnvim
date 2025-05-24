@@ -372,12 +372,6 @@ M.nvimtree = {
 	},
 }
 
-M.avante = {
-	n = {
-		["<leader>an"] = { "<cmd>AvanteClear<CR> ", "Clear Avante Buffer" },
-	},
-}
-
 M.telescope = {
 	n = {
 		-- find
