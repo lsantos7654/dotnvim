@@ -82,9 +82,12 @@ mv ~/.config/nvim ~/.config/nvim.backup
 # 2. Clone this configuration
 git clone https://github.com/lsantos7654/dotnvim.git ~/.config/nvim
 
-# 3. Install dependencies (macOS)
-brew install lua luarocks
+# 3. Install dependencies (Ubuntu)
+# If on mac install this instead
+# brew install lua luarocks
+sudo apt install -y liblua5.1-0-dev libmagickwand-dev luarocks
 pip install pynvim cairosvg pnglatex kaleido pyperclip jupyter-client
+
 
 # 4. Launch Neovim
 nvim
@@ -320,10 +323,3 @@ This landing page includes:
 - Developer-friendly features
 
 Just replace `https://github.com/lsantos7654/dotnvim.git` with your actual repo URL and add a screenshot if you have one. This will make your configuration look professional and attract other developers! 🚀
-
-```bash
-sudo apt install -y liblua5.1-0-dev libmagickwand-dev luarocks
-```
-```bash
-pip install pynvim cairosvg pnglatex kaleido pyperclip jupyter-client
-```
