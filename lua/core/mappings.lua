@@ -144,7 +144,7 @@ M.general = {
 		["P"] = { "<cmd>pu<CR>]==", "Paste below" },
 
 		-- Additional mappings from paste-2.txt
-		["<leader>s"] = { [[:%s/\v(<C-r><C-w>)//gI<Left><Left><Left>]], "Find and replace" },
+		["<leader>s"] = { [[:%s/\v(<C-r><C-w>)//gIc<Left><Left><Left><Left>]], "Find and replace" },
 		["n"] = { "nzzzv", "Next search result center screen" },
 		["N"] = { "Nzzzv", "Previous search result center screen" },
 		["<C-n>"] = { "<cmd>qall<CR>", "Quit Nvim" },
