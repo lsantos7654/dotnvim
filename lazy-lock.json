@@ -24,6 +24,7 @@
   "marks.nvim": { "branch": "master", "commit": "f353e8c08c50f39e99a9ed474172df7eddd89b72" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "3856bbb0da214d1f2f3d5a2dd3fea26591f930f9" },
   "mason.nvim": { "branch": "main", "commit": "9eaedb864cdadc29c6eb7d761a6c0d8aee26c91b" },
+  "mcphub.nvim": { "branch": "main", "commit": "9d4887f44e5f2e3cb1d3956590bf8a930238e7a3" },
   "mkdnflow.nvim": { "branch": "main", "commit": "d459bd7ce68910272038ed037c028180161fd14d" },
   "nabla.nvim": { "branch": "master", "commit": "9b69b709063ccf40ac36fabb4fff7d90b3736475" },
   "noice.nvim": { "branch": "main", "commit": "0427460c2d7f673ad60eb02b35f5e9926cf67c59" },

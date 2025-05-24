@@ -7,6 +7,17 @@ return {
 		provider = "claude", -- Set Claude as the default provider
 		auto_suggestions_provider = "claude", -- Use Claude for auto-suggestions too
 
+		system_prompt = function()
+			local hub = require("mcphub").get_hub_instance()
+			return hub and hub:get_active_servers_prompt() or ""
+		end,
+		-- Using function prevents requiring mcphub before it's loaded
+		custom_tools = function()
+			return {
+				require("mcphub.extensions.avante").mcp_tool(),
+			}
+		end,
+
 		-- 🎯 Claude Configuration (Primary)
 		claude = {
 			endpoint = "https://api.anthropic.com",
