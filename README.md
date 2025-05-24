@@ -1,5 +1,3 @@
-```markdown
-
 # 🚀 NeoVim Configuration
 
 *A modern, powerful, and beautifully crafted Neovim setup for developers*
