@@ -27,8 +27,8 @@ return {
 			html = { "prettier" },
 			css = { "prettier" },
 			scss = { "prettier" },
-			json = { "prettier" },
-			jsonc = { "prettier" },
+			json = { "fixjson", "prettier" },
+			jsonc = { "fixjson", "prettier" },
 			yaml = { "prettier" },
 			yml = { "prettier" },
 
@@ -59,12 +59,8 @@ return {
 			lsp_format = "fallback",
 		},
 
-		-- Format on save configuration
-		format_on_save = {
-			-- I recommend these options. See :help conform.format for details.
-			lsp_format = "fallback",
-			timeout_ms = 500,
-		},
+		-- Format on save configuration (disabled)
+		format_on_save = false,
 
 		-- Async format after save (optional - can be useful for slow formatters)
 		-- format_after_save = {
@@ -107,7 +103,25 @@ return {
 			-- Custom prettier configuration
 			prettier = {
 				condition = function(self, ctx)
-					-- Only use prettier if config exists or for web files
+					-- Use prettier for web files or if config exists
+					local web_filetypes = {
+						"json",
+						"jsonc",
+						"javascript",
+						"typescript",
+						"html",
+						"css",
+						"scss",
+						"yaml",
+						"markdown",
+					}
+
+					-- Check if current filetype is a web filetype
+					if vim.tbl_contains(web_filetypes, vim.bo[ctx.buf].filetype) then
+						return true
+					end
+
+					-- Check for prettier config
 					local prettier_configs = {
 						".prettierrc",
 						".prettierrc.json",
@@ -124,6 +138,13 @@ return {
 						path = ctx.filename,
 						upward = true,
 					})[1] ~= nil
+				end,
+				-- Add parser override for JSON files
+				prepend_args = function(self, ctx)
+					if vim.bo[ctx.buf].filetype == "json" or vim.bo[ctx.buf].filetype == "jsonc" then
+						return { "--parser", "json" }
+					end
+					return {}
 				end,
 			},
 
