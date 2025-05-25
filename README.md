@@ -51,8 +51,8 @@
 
 | Language | LSP | Formatter | Linter | Debugger |
 |----------|-----|-----------|--------|----------|
-| **Python** | Pyright | Ruff/Black | Ruff/MyPy | DebugPy |
 | **Lua** | lua_ls | StyLua | Built-in | - |
+| **Python** | - | Ruff/Black/isort | Ruff/MyPy | DebugPy |
 | **JavaScript/TypeScript** | ESLint | Prettier | ESLint | - |
 | **C/C++** | Clangd | clang-format | Built-in | CodeLLDB |
 | **HTML/CSS** | HTML-LS | Prettier | Built-in | - |
@@ -210,14 +210,14 @@ M.your_plugin = {
 ## 🧪 Special Features
 
 ### 📊 **Data Science Ready**
-- **Molten**: Jupyter notebook integration
-- **Image Support**: View plots and images inline
-- **Quarto**: R/Python notebook support
+- **Molten**: Jupyter notebook integration with image.nvim support
+- **Image Support**: View plots and images inline with kitty backend
+- **Quarto/Markdown**: Enhanced support with Otter LSP integration
 
 ### 🤖 **AI-Powered Development**
-- **Avante**: AI code assistance
-- **Copilot**: GitHub Copilot integration
-- **Smart Completions**: Context-aware suggestions
+- **Avante**: AI code assistance with Claude 3.5 Sonnet
+- **MCP Hub**: Model Context Protocol integration
+- **Smart Completions**: Context-aware suggestions with nvim-cmp
 
 ### 📝 **Markdown Excellence**
 - **Live Preview**: Real-time markdown rendering

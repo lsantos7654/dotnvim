@@ -1,8 +1,9 @@
 return {
-	-- Image support ""
 	"3rd/image.nvim",
-	dependencies = { "luarocks.nvim" },
+	build = false, -- Disable rock building
 	opts = {
+		processor = "magick_cli", -- Use CLI instead of rock
+		backend = "kitty",
 		integrations = {
 			markdown = {
 				enabled = true,
@@ -12,7 +13,6 @@ return {
 				filetypes = { "markdown", "vimwiki", "quarto" },
 			},
 		},
-		backend = "kitty",
 		max_width = 100,
 		max_height = 30,
 		max_height_window_percentage = math.huge,

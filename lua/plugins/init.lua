@@ -63,10 +63,10 @@ require("lazy").setup({
 		{ "nvim-neotest/nvim-nio" }, -- Asynchronous I/O library (dependency for some plugins)
 
 		-- Language Support
-		-- require("plugins.dev_tools.luarocks"), -- LuaRocks package manager integration
-		-- require("plugins.dev_tools.molten"), -- Jupyter Notebook integration in Neovim
-		-- require("plugins.dev_tools.image"), -- Image viewing support within Neovim
-		-- require("plugins.dev_tools.otter"), -- inline python lsp in markdown
+		require("plugins.dev_tools.luarocks"), -- LuaRocks package manager integration
+		require("plugins.dev_tools.molten"), -- Jupyter Notebook integration in Neovim
+		require("plugins.dev_tools.image"), -- Image viewing support within Neovim
+		require("plugins.dev_tools.otter"), -- inline python lsp in markdown
 	},
 
 	-- Coding Assistance
