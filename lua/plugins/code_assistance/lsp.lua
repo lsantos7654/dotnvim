@@ -29,16 +29,6 @@ return {
 
 		-- Use mason-lspconfig to automatically setup servers
 		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"pyright",
-				"lua_ls", 
-				"clangd",
-				"jsonls",
-				"bashls",
-				"eslint",
-				"html",
-				"bzl"
-			},
 			handlers = {
 				-- Default handler - uses vim.lsp.enable
 				function(server_name)
@@ -48,11 +38,11 @@ return {
 
 				-- Custom configurations for specific servers
 				lua_ls = function()
-					vim.lsp.config('lua_ls', {
+					vim.lsp.config("lua_ls", {
 						settings = {
 							Lua = {
 								diagnostics = {
-									globals = { 'vim' }
+									globals = { "vim" },
 								},
 								workspace = {
 									library = vim.api.nvim_get_runtime_file("", true),
@@ -61,37 +51,22 @@ return {
 								telemetry = {
 									enable = false,
 								},
-							}
-						}
+							},
+						},
 					})
-					vim.lsp.enable('lua_ls')
-				end,
-
-				pyright = function()
-					vim.lsp.config('pyright', {
-						settings = {
-							python = {
-								analysis = {
-									typeCheckingMode = "basic",
-									autoSearchPaths = true,
-									useLibraryCodeForTypes = true,
-								}
-							}
-						}
-					})
-					vim.lsp.enable('pyright')
+					vim.lsp.enable("lua_ls")
 				end,
 
 				bzl = function()
-					vim.lsp.config('bzl', {
+					vim.lsp.config("bzl", {
 						root_dir = require("lspconfig.util").root_pattern(
 							"MODULE.bazel",
-							"WORKSPACE", 
+							"WORKSPACE",
 							"WORKSPACE.bazel",
 							".git"
 						),
 					})
-					vim.lsp.enable('bzl')
+					vim.lsp.enable("bzl")
 				end,
 			},
 		})
