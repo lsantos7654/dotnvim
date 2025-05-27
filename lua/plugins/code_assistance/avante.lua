@@ -21,7 +21,7 @@ return {
 		-- 🎯 Claude Configuration (Primary)
 		claude = {
 			endpoint = "https://api.anthropic.com",
-			model = "claude-3-5-sonnet-20241022", -- Latest Claude model
+			model = "claude-sonnet-4-20250514",
 			temperature = 0,
 			max_tokens = 8192, -- Increased for longer responses
 			timeout = 30000, -- 30 second timeout
