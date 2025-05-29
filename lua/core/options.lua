@@ -45,7 +45,7 @@ vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermbg = "NONE" })
 vim.api.nvim_set_hl(0, "NonText", { bg = "NONE", ctermbg = "NONE" })
 vim.opt.laststatus = 3 -- Global statusline
 vim.opt.showmode = false -- Don't show mode (status line shows it)
-vim.opt.wrap = false -- Don't wrap lines
+vim.opt.wrap = true -- Don't wrap lines
 vim.opt.linebreak = true -- Break lines at word boundaries when wrap is on
 
 -- File handling
