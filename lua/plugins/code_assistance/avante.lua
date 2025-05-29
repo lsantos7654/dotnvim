@@ -5,7 +5,8 @@ return {
 	opts = {
 		-- 🤖 Primary AI Provider Configuration
 		provider = "claude", -- Set Claude as the default provider
-		auto_suggestions_provider = "claude", -- Use Claude for auto-suggestions too
+		-- provider = "deepseek",
+		-- auto_suggestions_provider = "claude", -- Use Claude for auto-suggestions too
 
 		system_prompt = function()
 			local hub = require("mcphub").get_hub_instance()
@@ -29,12 +30,14 @@ return {
 
 		-- 💤 DeepSeek Configuration (Commented out but ready to use)
 		-- Uncomment and change provider to "deepseek" to switch
-		-- deepseek = {
-		-- 	__inherited_from = "openai", -- Inherit OpenAI's base configuration
-		-- 	api_key_name = "",
-		-- 	endpoint = "http://deepseek-v3.clusters.corp.theaiinstitute.com/v1",
-		-- 	model = "default",
-		-- 	disable_tools = true,
+		-- vendors = {
+		-- 	["deepseek"] = {
+		-- 		__inherited_from = "openai", -- Inherit OpenAI's base configuration
+		-- 		api_key_name = "",
+		-- 		endpoint = "http://deepseek-v3.clusters.corp.theaiinstitute.com/v1",
+		-- 		model = "default",
+		-- 		disable_tools = true,
+		-- 	},
 		-- },
 
 		-- 🎛️ Enhanced Behavior Configuration
@@ -165,10 +168,10 @@ return {
 		-- disable_tools = false, -- Keep tools enabled for Claude
 
 		-- 🌐 Web Search Configuration (Optional)
-		web_search_engine = {
-			provider = "tavily", -- Default web search provider
-			-- proxy = nil, -- Add proxy if needed
-		},
+		-- web_search_engine = {
+		-- 	provider = "tavily", -- Default web search provider
+		-- 	-- proxy = nil, -- Add proxy if needed
+		-- },
 	},
 
 	-- 🔨 Build Configuration
