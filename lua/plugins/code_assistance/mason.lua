@@ -1,7 +1,7 @@
 local options = {
 	ensure_installed = {
 		-- Language Servers
-		-- "pyright",
+		"pyright",
 		"lua-language-server",
 		"clangd",
 		"json-lsp",

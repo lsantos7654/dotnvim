@@ -17,7 +17,7 @@ return {
 				yaml = false,
 				cmp = false,
 			},
-			filetypes = { md = true, rmd = true, markdown = true, qmd = true, Quatro = true},
+			filetypes = { md = true, rmd = true, markdown = true, qmd = true, Quatro = true },
 			create_dirs = true,
 			perspective = {
 				priority = "first",
@@ -103,7 +103,7 @@ return {
 				bib = { override = false },
 			},
 			mappings = {
-				MkdnEnter = { { "n", "i", "v" }, "<CR>" },
+				MkdnEnter = { { "n" }, "<CR>" },
 				MkdnTab = false,
 				MkdnSTab = false,
 				MkdnNextLink = false,
