@@ -103,7 +103,7 @@ return {
 				bib = { override = false },
 			},
 			mappings = {
-				MkdnEnter = { { "n" }, "<CR>" },
+				MkdnEnter = { { "n", "i" }, "<CR>" },
 				MkdnTab = false,
 				MkdnSTab = false,
 				MkdnNextLink = false,

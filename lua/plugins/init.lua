@@ -49,6 +49,7 @@ require("lazy").setup({
 		require("plugins.ui_visual.csv"), -- treesitter context
 		require("plugins.ui_visual.nabla"), -- treesitter context
 		require("plugins.ui_visual.log-highlight"), -- treesitter context
+		require("plugins.ui_visual.render-markdown"), -- treesitter context
 	},
 
 	-- Development Tools
@@ -75,13 +76,11 @@ require("lazy").setup({
 		require("plugins.code_assistance.mason"), -- Manage LSP servers, linters, and formatters
 		require("plugins.code_assistance.lsp"), -- LSP configuration
 		require("plugins.code_assistance.conform"), -- Simplified LSP setup
-		require("plugins.code_assistance.mcp_hub"),
 
 		-- Autocompletion
 		require("plugins.code_assistance.cmp"), -- Intelligent code completion
 
 		-- Coding Utilities
-		require("plugins.code_assistance.avante"), -- AI Assistance (Default: Claude 3.5)
 		require("plugins.code_assistance.comment"), -- Easy code commenting
 		require("plugins.code_assistance.zen"), -- Distraction-free coding mode
 	},
