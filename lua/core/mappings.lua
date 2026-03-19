@@ -570,30 +570,6 @@ M.noice = {
 	},
 }
 
-M.window = {
-	n = {
-		["<leader>mm"] = {
-			function()
-				require("codewindow").toggle_minimap()
-			end,
-			"Toggle minimap",
-		},
-		["<leader>mf"] = {
-			function()
-				local codewindow = require("codewindow")
-				codewindow.toggle_focus()
-				IS_FOCUS = not IS_FOCUS
-				if IS_FOCUS then
-					vim.o.scrolloff = 999
-				else
-					vim.o.scrolloff = 8
-				end
-			end,
-			"Toggle focus and center cursor",
-		},
-	},
-}
-
 M.tab = {
 	n = {
 		["<Tab>"] = { "<Cmd>BufferNext<CR>", "Jump to next tab" },

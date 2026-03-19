@@ -33,7 +33,6 @@ require("lazy").setup({
 	-- UI and Visual Enhancements
 	{
 		require("plugins.ui_visual.treesitter"), -- Advanced syntax highlighting and code analysis
-		-- require("plugins.ui_visual.codewindow"), -- Disabled: incompatible with current nvim-treesitter
 		require("plugins.ui_visual.web-devicons"), -- File icons for various plugins
 		require("plugins.ui_visual.noice"), -- Enhance UI for commandline, messages, and popupmenu
 		require("plugins.ui_visual.notify"), -- Fancy notification system
