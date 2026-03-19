@@ -1,325 +1,160 @@
-# 🚀 NeoVim Configuration
+# dotnvim
 
-*A modern, powerful, and beautifully crafted Neovim setup for developers*
+Personal Neovim configuration built on [lazy.nvim](https://github.com/folke/lazy.nvim). Catppuccin Mocha with transparent background.
 
-[![Neovim](https://img.shields.io/badge/Neovim-0.11+-brightgreen.svg?style=for-the-badge&logo=neovim)](https://neovim.io/)
-[![Lua](https://img.shields.io/badge/Made%20with-Lua-blueviolet.svg?style=for-the-badge&logo=lua)](https://lua.org)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+## Requirements
 
-<img src="https://user-images.githubusercontent.com/your-screenshot.png" alt="Neovim Screenshot" width="800"/>
+- Neovim 0.11+
+- Git
+- Node.js (for some LSP servers)
+- Python 3.10+ (for Jupyter/molten support)
+- [ripgrep](https://github.com/BurntSushi/ripgrep) (for Telescope live grep)
+- A [Nerd Font](https://www.nerdfonts.com/) (for icons)
 
-*Productivity meets aesthetics in this carefully curated development environment*
-
-</div>
-
----
-
-## ✨ Features
-
-<table>
-<tr>
-<td width="50%">
-
-### 🎯 **Development Experience**
-- 🔥 **Native LSP** with zero-config language servers
-- 🚀 **Smart Autocompletion** with context-aware suggestions
-- 🎨 **Modern Formatting** using conform.nvim
-- 🔍 **Fuzzy Finding** with Telescope integration
-- 📝 **Snippet Support** with LuaSnip
-- 🐛 **Integrated Debugging** ready to go
-
-</td>
-<td width="50%">
-
-### 🎨 **Visual & UI**
-- 🌙 **Catppuccin Theme** with transparent background
-- 📊 **Beautiful Status Line** with Feline
-- 🗂️ **Smart Tabs** with Barbar
-- 🌳 **File Explorer** with NvimTree + Oil
-- 🔔 **Modern Notifications** with Noice + Notify
-- ✨ **Smooth Animations** throughout
-
-</td>
-</tr>
-</table>
-
----
-
-## 🛠️ Language Support
-
-<div align="center">
-
-| Language | LSP | Formatter | Linter | Debugger |
-|----------|-----|-----------|--------|----------|
-| **Lua** | lua_ls | StyLua | Built-in | - |
-| **Python** | - | Ruff/Black/isort | Ruff/MyPy | DebugPy |
-| **JavaScript/TypeScript** | ESLint | Prettier | ESLint | - |
-| **C/C++** | Clangd | clang-format | Built-in | CodeLLDB |
-| **HTML/CSS** | HTML-LS | Prettier | Built-in | - |
-| **JSON/YAML** | JSON-LS | Prettier | Built-in | - |
-| **Bash/Shell** | Bash-LS | shfmt | ShellCheck | - |
-| **Bazel** | bzl | Buildifier | Built-in | - |
-
-</div>
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- **Neovim 0.11+** (required for modern LSP features)
-- **Git** (for plugin management)
-- **Node.js** (for some language servers)
-- **Python 3.8+** (for Python development)
-
-### Installation
+## Install
 
 ```bash
-# 1. Backup existing config (if any)
+# Backup existing config
 mv ~/.config/nvim ~/.config/nvim.backup
 
-# 2. Clone this configuration
+# Clone
 git clone https://github.com/lsantos7654/dotnvim.git ~/.config/nvim
 
-# 3. Install dependencies (Ubuntu)
-# If on mac install this instead
-# brew install lua luarocks
-sudo apt install -y liblua5.1-0-dev libmagickwand-dev luarocks
+# Python dependencies (for Jupyter/image support)
 pip install pynvim cairosvg pnglatex kaleido pyperclip jupyter-client
 
-
-# 4. Launch Neovim
+# Launch — plugins install automatically
 nvim
 ```
 
-The configuration will automatically:
-- Install Lazy.nvim plugin manager
-- Download and install all plugins
-- Set up language servers via Mason
-- Configure everything for immediate use
-
----
-
-## 📁 Project Structure
+## Structure
 
 ```
-~/.config/nvim/
-├── 📁 lua/
-│   ├── 📁 core/
-│   │   ├── 🔧 options.lua      # Core Neovim settings
-│   │   └── ⌨️  mappings.lua     # Keybindings & shortcuts
-│   └── 📁 plugins/
-│       ├── 📁 code_assistance/
-│       │   ├── 🔌 lsp.lua      # Language Server setup
-│       │   ├── 🎯 cmp.lua      # Autocompletion
-│       │   ├── ✨ conform.lua  # Code formatting
-│       │   └── 🤖 avante.lua   # AI assistance
-│       ├── 📁 ui_visual/
-│       │   ├── 🎨 theme.lua    # Color scheme
-│       │   ├── 📊 status.lua   # Status line
-│       │   └── 🗂️  tabs.lua     # Tab management
-│       ├── 📁 navigation/
-│       │   ├── 🔍 telescope.lua # Fuzzy finder
-│       │   └── 🌳 nvimtree.lua  # File explorer
-│       └── 📁 dev_tools/
-│           ├── 🔀 gitsigns.lua # Git integration
-│           └── 📝 molten.lua   # Jupyter support
-└── 🚀 init.lua                 # Entry point
+lua/
+├── core/
+│   ├── options.lua          # Editor settings
+│   └── mappings.lua         # All keybindings
+└── plugins/
+    ├── code_assistance/     # LSP, completion, formatting, leetcode
+    ├── ui_visual/           # Theme, statusline, treesitter, notifications
+    ├── navigation/          # Telescope, nvim-tree, oil
+    ├── dev_tools/           # Git, terminal, Jupyter, image support
+    └── session/             # Session management
 ```
 
----
+## Plugins
 
-## ⌨️ Key Mappings
+**LSP & Completion**: mason.nvim, nvim-lspconfig, nvim-cmp, conform.nvim
 
-<details>
-<summary><b>🔥 Essential Shortcuts (Click to expand)</b></summary>
+**Navigation**: telescope.nvim, nvim-tree, oil.nvim, vim-tmux-navigator
 
-### Navigation & Files
-```lua
-<leader>ff  -- Find files
-<leader>fw  -- Live grep search
-<leader>fb  -- Find buffers
-<leader>e   -- Toggle file explorer
-<leader>o   -- Oil file editor
-```
+**UI**: catppuccin, lualine.nvim, barbar.nvim, noice.nvim, nvim-notify, indent-blankline, which-key
 
-### LSP & Code
-```lua
-gd          -- Go to definition
-gr          -- Find references
-K           -- Hover documentation
-<leader>ca  -- Code actions
-<leader>fm  -- Format code
-[d / ]d     -- Navigate diagnostics
-```
+**Treesitter**: nvim-treesitter, treesitter-textobjects, treesitter-context
 
-### Git Integration
-```lua
-<leader>gh  -- Open Git status
-<leader>gb  -- Git blame
-]c / [c     -- Next/prev git hunk
-<leader>ph  -- Preview hunk
-```
+**Git**: fugitive, gitsigns.nvim
 
-### Productivity
-```lua
-<leader>/   -- Toggle comment
-<leader>z   -- Zen mode
-<leader>u   -- Undo tree
-<C-h/j/k/l> -- Window navigation
-<Tab>       -- Next buffer
-<S-Tab>     -- Previous buffer
-```
+**Markdown**: mkdnflow.nvim, render-markdown.nvim, nabla.nvim
 
-</details>
+**Data Science**: molten-nvim (Jupyter), image.nvim, otter.nvim
 
----
+**Misc**: comment.nvim, zen-mode, todo-comments, undotree, leetcode.nvim
 
-## 🎨 Customization
+## Language Support
 
-### Themes
-The configuration uses **Catppuccin** with transparent background. To change themes:
+| Language | LSP | Formatter | Linter |
+|---|---|---|---|
+| Lua | lua_ls | stylua | built-in |
+| Python | pyright | ruff / black | ruff / mypy |
+| JS/TS | eslint | prettier | eslint |
+| C/C++ | clangd | clang-format | built-in |
+| HTML/CSS | html-ls | prettier | built-in |
+| JSON/YAML | json-ls | prettier / fixjson | built-in |
+| Bash | bash-ls | shfmt | shellcheck |
+| Bazel | bzl | buildifier | built-in |
 
-```lua
--- In lua/plugins/ui_visual/theme.lua
-vim.cmd.colorscheme("your-theme-name")
-```
+## Key Mappings
 
-### Adding Language Servers
-```lua
--- In lua/plugins/code_assistance/mason.lua
-ensure_installed = {
-    "your-language-server",  -- Add here
-    -- ... existing servers
-}
-```
+Leader is `Space`.
 
-### Custom Keymaps
-```lua
--- In lua/core/mappings.lua
-M.your_plugin = {
-    n = {
-        ["<leader>xx"] = { "<cmd>YourCommand<CR>", "Description" },
-    }
-}
-```
+### Navigation
 
----
+| Key | Action |
+|---|---|
+| `<leader>ff` | Find files |
+| `<leader>fw` | Live grep |
+| `<leader>fb` | Find buffers |
+| `<leader>fo` | Recent files |
+| `<leader>e` | Focus file explorer |
+| `<leader>o` | Oil file editor |
+| `<C-h/j/k/l>` | Window/tmux navigation |
+| `<Tab>` / `<S-Tab>` | Next/prev buffer |
+| `<leader>1-9` | Jump to buffer N |
 
-## 🧪 Special Features
+### LSP
 
-### 📊 **Data Science Ready**
-- **Molten**: Jupyter notebook integration with image.nvim support
-- **Image Support**: View plots and images inline with kitty backend
-- **Quarto/Markdown**: Enhanced support with Otter LSP integration
+| Key | Action |
+|---|---|
+| `gd` | Go to definition |
+| `gD` | Go to declaration |
+| `gr` | References |
+| `gi` | Implementation |
+| `K` | Hover docs |
+| `<leader>ca` | Code action |
+| `<leader>fm` | Format |
+| `<leader>lf` | Floating diagnostic |
+| `[d` / `]d` | Prev/next diagnostic |
 
-### 🤖 **AI-Powered Development**
-- **Avante**: AI code assistance with Claude 3.5 Sonnet
-- **MCP Hub**: Model Context Protocol integration
-- **Smart Completions**: Context-aware suggestions with nvim-cmp
+### Git
 
-### 📝 **Markdown Excellence**
-- **Live Preview**: Real-time markdown rendering
-- **Math Support**: LaTeX equation rendering
-- **Mermaid Diagrams**: Flow chart support
+| Key | Action |
+|---|---|
+| `<leader>gh` | Open fugitive |
+| `<leader>gb` | Blame line |
+| `<leader>ph` | Preview hunk |
+| `<leader>gr` | Reset hunk |
+| `]c` / `[c` | Next/prev hunk |
 
----
+### Jupyter (Molten)
 
-## 🔧 Troubleshooting
+| Key | Action |
+|---|---|
+| `<leader>r` | Evaluate line |
+| `<leader>r` (visual) | Evaluate selection |
+| `<leader>rr` | Re-evaluate cell |
+| `]b` / `[b` | Next/prev cell |
 
-<details>
-<summary><b>Common Issues & Solutions</b></summary>
+### Markdown
 
-### LSP Not Working
-```bash
-# Check LSP status
-:LspInfo
+| Key | Action |
+|---|---|
+| `<leader>mb` | Bold word |
+| `<leader>mi` | Italic word |
+| `<leader>ms` | Strikethrough |
+| `<leader>mn` | Numbered list |
+| `<leader>mc` | Checklist |
+| `<leader>ml` | Bullet list |
 
-# Install missing servers
-:Mason
-:MasonInstallAll
-```
+### LeetCode
 
-### Plugins Not Loading
-```bash
-# Check plugin status
-:Lazy
+| Key | Action |
+|---|---|
+| `:Leet` | Open dashboard |
+| `<leader>lt` | Run tests |
+| `<leader>lr` | Submit |
+| `<leader>ld` | Toggle description |
 
-# Update plugins
-:Lazy update
-```
+### Other
 
-### Performance Issues
-```bash
-# Check startup time
-nvim --startuptime startup.log
+| Key | Action |
+|---|---|
+| `<leader>/` | Toggle comment |
+| `<leader>z` | Zen mode |
+| `<leader>u` | Undo tree |
+| `<leader>x` | Close buffer |
+| `<C-s>` | Save |
+| `<C-n>` | Quit |
 
-# Profile plugins
-:Lazy profile
-```
+## License
 
-</details>
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to:
-
-1. 🐛 **Report bugs** via Issues
-2. 💡 **Suggest features** or improvements
-3. 🔀 **Submit pull requests** with enhancements
-4. 📖 **Improve documentation**
-
----
-
-## 📜 License
-
-This configuration is open source and available under the [MIT License](LICENSE).
-
----
-
-<div align="center">
-
-### 🌟 **Star this repo if it helped you!** 🌟
-
-*Happy coding with Neovim!* 🚀
-
----
-
-**Built with ❤️ by [Santos](https://github.com/lsantos7654)**
-
-*"Code is poetry written in logic"*
-
-</div>
-```
-
-This landing page includes:
-
-## ✨ **Modern Features:**
-- **Responsive design** with tables and collapsible sections
-- **Beautiful badges** and status indicators  
-- **Organized sections** with clear structure
-- **Visual hierarchy** using emojis and formatting
-- **Interactive elements** like expandable sections
-- **Professional layout** with centered content
-
-## 📋 **Comprehensive Content:**
-- **Feature overview** with your actual plugins
-- **Language support matrix** showing capabilities
-- **Installation instructions** for macOS
-- **Project structure** visualization
-- **Key mappings** reference
-- **Customization guides**
-- **Troubleshooting section**
-- **Contributing guidelines**
-
-## 🎯 **Highlights Your Setup:**
-- Native LSP configuration (modern approach)
-- Conform.nvim for formatting
-- Mason for tool management
-- Comprehensive plugin ecosystem
-- Developer-friendly features
-
-Just replace `https://github.com/lsantos7654/dotnvim.git` with your actual repo URL and add a screenshot if you have one. This will make your configuration look professional and attract other developers! 🚀
+[MIT](LICENSE)
