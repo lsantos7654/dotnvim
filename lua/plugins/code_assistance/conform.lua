@@ -42,7 +42,7 @@ return {
 			cpp = { "clang_format" },
 
 			-- Bazel
-			bzl = { "buildifier" },
+			-- bzl = { "buildifier" },
 
 			-- Markdown
 			markdown = { "prettier" },

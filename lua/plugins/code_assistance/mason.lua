@@ -8,7 +8,7 @@ local options = {
 		"bash-language-server",
 		"eslint-lsp",
 		"html-lsp",
-		"bzl",
+		-- "bzl",
 
 		-- Debuggers
 		"debugpy",

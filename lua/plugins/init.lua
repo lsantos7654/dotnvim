@@ -33,7 +33,7 @@ require("lazy").setup({
 	-- UI and Visual Enhancements
 	{
 		require("plugins.ui_visual.treesitter"), -- Advanced syntax highlighting and code analysis
-		require("plugins.ui_visual.codewindow"), -- Minimap-style code outline
+		-- require("plugins.ui_visual.codewindow"), -- Disabled: incompatible with current nvim-treesitter
 		require("plugins.ui_visual.web-devicons"), -- File icons for various plugins
 		require("plugins.ui_visual.noice"), -- Enhance UI for commandline, messages, and popupmenu
 		require("plugins.ui_visual.notify"), -- Fancy notification system
@@ -64,7 +64,6 @@ require("lazy").setup({
 		{ "nvim-neotest/nvim-nio" }, -- Asynchronous I/O library (dependency for some plugins)
 
 		-- Language Support
-		require("plugins.dev_tools.luarocks"), -- LuaRocks package manager integration
 		require("plugins.dev_tools.molten"), -- Jupyter Notebook integration in Neovim
 		require("plugins.dev_tools.image"), -- Image viewing support within Neovim
 		require("plugins.dev_tools.otter"), -- inline python lsp in markdown
@@ -83,5 +82,8 @@ require("lazy").setup({
 		-- Coding Utilities
 		require("plugins.code_assistance.comment"), -- Easy code commenting
 		require("plugins.code_assistance.zen"), -- Distraction-free coding mode
+
+		-- Leetcode :(
+		require("plugins.code_assistance.leetcode"), -- Easy code commenting
 	},
 })

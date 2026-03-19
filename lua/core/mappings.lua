@@ -842,14 +842,14 @@ M.markdown = {
 	},
 }
 
--- M.leetcode = {
--- 	n = {
--- 		["<leader>lt"] = { "<cmd>Leet test<CR>", "Run test cases" },
--- 		["<leader>lr"] = { "<cmd>Leet submit<CR>", "Submit" },
--- 		["<leader>ld"] = { "<cmd>Leet desc<CR>", "Toggle description" },
--- 		["<leader>lc"] = { "<cmd>Leet console<CR>", "Toggle console" },
--- 	},
--- }
+M.leetcode = {
+	n = {
+		["<leader>lt"] = { "<cmd>Leet test<CR>", "Run test cases" },
+		["<leader>lr"] = { "<cmd>Leet submit<CR>", "Submit" },
+		["<leader>ld"] = { "<cmd>Leet desc<CR>", "Toggle description" },
+		["<leader>lc"] = { "<cmd>Leet console<CR>", "Toggle console" },
+	},
+}
 
 -- Function to load mappings
 local function load_mappings(mappings)

@@ -8,24 +8,23 @@ return {
 		{ "williamboman/mason-lspconfig.nvim" },
 	},
 	config = function()
-		-- Enhanced diagnostics configuration
 		vim.diagnostic.config({
 			virtual_text = {
 				spacing = 4,
 				prefix = "●",
 			},
-			signs = true,
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = "󰅚 ",
+					[vim.diagnostic.severity.WARN] = "󰀪 ",
+					[vim.diagnostic.severity.HINT] = "󰌶 ",
+					[vim.diagnostic.severity.INFO] = " ",
+				},
+			},
 			underline = true,
 			update_in_insert = false,
 			severity_sort = true,
 		})
-
-		-- Customize diagnostic signs
-		local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-		end
 
 		-- Use mason-lspconfig to automatically setup servers
 		require("mason-lspconfig").setup({
@@ -37,7 +36,9 @@ return {
 				end,
 
 				-- Custom configurations for specific servers
-				lua_ls = function()
+				stylua = function() end, -- formatter only, handled by conform.nvim
+
+			lua_ls = function()
 					vim.lsp.config("lua_ls", {
 						settings = {
 							Lua = {
@@ -57,17 +58,17 @@ return {
 					vim.lsp.enable("lua_ls")
 				end,
 
-				bzl = function()
-					vim.lsp.config("bzl", {
-						root_dir = require("lspconfig.util").root_pattern(
-							"MODULE.bazel",
-							"WORKSPACE",
-							"WORKSPACE.bazel",
-							".git"
-						),
-					})
-					vim.lsp.enable("bzl")
-				end,
+				-- bzl = function()
+				-- 	vim.lsp.config("bzl", {
+				-- 		root_dir = require("lspconfig.util").root_pattern(
+				-- 			"MODULE.bazel",
+				-- 			"WORKSPACE",
+				-- 			"WORKSPACE.bazel",
+				-- 			".git"
+				-- 		),
+				-- 	})
+				-- 	vim.lsp.enable("bzl")
+				-- end,
 			},
 		})
 	end,
